@@ -1,0 +1,4 @@
+create a readme file
+create a main website
+add all the required components
+add components list
