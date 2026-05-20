@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>SciTech Portfolio | Sarveshwar Senthil Kumar | Multi-Link Evidence Hub</title>
+  <title>SciTech Portfolio | Sarveshwar Senthil Kumar | Permanent Evidence Links</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -182,7 +182,7 @@
     }
 
     .links-list {
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.5rem;
     }
 
     .link-item {
@@ -215,46 +215,6 @@
       text-decoration: underline;
     }
 
-    .link-actions {
-      display: flex;
-      gap: 6px;
-    }
-
-    .icon-btn {
-      background: #eef2f7;
-      border: none;
-      padding: 0.3rem 0.7rem;
-      border-radius: 30px;
-      font-size: 0.7rem;
-      cursor: pointer;
-      transition: 0.1s;
-      color: #2c4c6e;
-    }
-
-    .icon-btn:hover {
-      background: #cbdde9;
-    }
-
-    .add-link-btn {
-      background: transparent;
-      border: 1px dashed #7fa1c1;
-      width: 100%;
-      text-align: center;
-      padding: 0.5rem;
-      border-radius: 0.7rem;
-      color: #2c7da0;
-      font-size: 0.75rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: 0.1s;
-      margin-top: 4px;
-    }
-
-    .add-link-btn:hover {
-      background: #e6f4ff;
-      border-color: #2c7da0;
-    }
-
     .empty-links {
       color: #8ba0b5;
       font-size: 0.75rem;
@@ -279,6 +239,19 @@
       color: #5b7e9e;
       border-top: 1px solid #cbdde9;
       padding-top: 1.5rem;
+      background: #f9fbfd;
+      border-radius: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    .edit-hint {
+      background: #e8f0fe;
+      border-radius: 0.6rem;
+      padding: 0.5rem 1rem;
+      font-size: 0.7rem;
+      font-family: monospace;
+      margin-top: 0.5rem;
+      color: #004070;
     }
 
     @media (max-width: 800px) {
@@ -300,8 +273,8 @@
 <div class="container">
   <div class="header-card">
     <div class="title-section">
-      <h1><i class="fas fa-layer-group"></i> SciTech Multi-Link Portfolio</h1>
-      <p>Add unlimited evidence links per requirement • Google Drive • PDFs • Photos • Certificates</p>
+      <h1><i class="fas fa-link"></i> SciTech Permanent Portfolio</h1>
+      <p>Hardcoded evidence links • Works on any device • Edit URLs directly in the HTML</p>
     </div>
     <div class="student-info">
       <p><strong><i class="fas fa-user-graduate"></i> Sarveshwar Senthil Kumar</strong></p>
@@ -320,16 +293,132 @@
   <div id="dynamicPortfolioContent"></div>
 
   <div class="footer-note">
-    <i class="fas fa-plus-circle"></i> For each requirement, click <strong>"+ Add Link"</strong> to attach evidence. Edit or delete any link anytime. All data saves automatically.
+    <i class="fas fa-code"></i> <strong>How to edit these links permanently:</strong> Open this HTML file in any text editor (Notepad, VS Code). Scroll to the <code style="background:#e2e8f0;padding:2px 6px;border-radius:8px;">// ========== LINKS DATABASE (EDIT YOUR URLs HERE) ==========</code> section. Replace the placeholder URLs with your real Google Drive / PDF / photo links. Save and re-open — your links will be visible to everyone!
   </div>
 </div>
 
 <script>
-  // ---------- MULTI-LINK STORAGE ----------
-  // Structure: storage[linkKey] = array of { url, label? } (label optional)
-  let multiLinkStorage = {};
+  // =========================================================================
+  // ========== LINKS DATABASE (EDIT YOUR URLs HERE — PERMANENT) ==========
+  // =========================================================================
+  // Replace the placeholder URLs with your actual evidence links.
+  // Each requirement can have MULTIPLE links (array of objects).
+  // Format: { url: "https://your-link.com/file.pdf", label: "Optional description" }
+  // =========================================================================
 
-  // Complete requirements structure with unique keys per requirement
+  const PERMANENT_LINKS = {
+    // ========== GRADE 9 ==========
+    "gr9_why_scitech": [
+      { url: "https://drive.google.com/your-why-scitech-statement.pdf", label: "Why I Took SciTech - Written Reflection" }
+    ],
+    "gr9_future_goals": [
+      { url: "https://docs.google.com/document/d/your-future-goals", label: "My Career & Post-Secondary Goals" }
+    ],
+    "gr9_academic_evidence": [
+      { url: "https://drive.google.com/grade9-report-card.pdf", label: "Grade 9 Semester 1 Report Card" },
+      { url: "https://drive.google.com/certificate-of-merit.pdf", label: "Honour Roll Certificate" }
+    ],
+    "gr9_science_project": [
+      { url: "https://drive.google.com/grade9-science-lab-investigation.pdf", label: "Plant Growth Experiment - Full Report" },
+      { url: "https://photos.app.goo.gl/your-photo-album", label: "Project Photos & Data Tables" }
+    ],
+    "gr9_tech_project": [
+      { url: "https://drive.google.com/tech-design-bridge-project.pdf", label: "Bridge Design CAD & Reflection" }
+    ],
+    "gr9_safe_practices": [
+      { url: "https://drive.google.com/whmis-certificate.pdf", label: "WHMIS 2015 Certificate" },
+      { url: "https://drive.google.com/safety-quiz-result.pdf", label: "Lab Safety Quiz - 100%" }
+    ],
+    "gr9_community_activity": [
+      { url: "https://drive.google.com/volunteer-hours-log.pdf", label: "Library Volunteer Hours & Supervisor Sign-off" }
+    ],
+    "gr9_scitech_extra": [
+      { url: "https://drive.google.com/robotics-club-participation.pdf", label: "Robotics Club Attendance & Project" }
+    ],
+
+    // ========== GRADE 10 ==========
+    "gr10_academic": [
+      { url: "https://drive.google.com/grade10-report-card.pdf", label: "Grade 10 Final Report Card" }
+    ],
+    "gr10_career_investigation": [
+      { url: "https://www.myblueprint.ca/your-shared-summary", label: "MyBlueprint Career Profile Summary" }
+    ],
+    "gr10_resume_cover": [
+      { url: "https://drive.google.com/grade10-resume-coverletter.pdf", label: "Resume & Cover Letter - Grade 10" }
+    ],
+    "gr10_science_project": [
+      { url: "https://drive.google.com/chemistry-reaction-rate-lab.pdf", label: "Chemical Reaction Rates - Lab Report" }
+    ],
+    "gr10_tech_project": [
+      { url: "https://drive.google.com/circuit-design-project.pdf", label: "Arduino Traffic Light System" }
+    ],
+    "gr10_safe_practices": [
+      { url: "https://drive.google.com/advanced-safety-cert.pdf", label: "Advanced Lab Safety Certification" }
+    ],
+    "gr10_community_growth": [
+      { url: "https://drive.google.com/peer-tutoring-log.pdf", label: "Peer Tutoring Math - 20 Hours" }
+    ],
+    "gr10_scitech_growth": [
+      { url: "https://drive.google.com/regional-science-fair.pdf", label: "Regional Science Fair - Water Filtration Project" }
+    ],
+
+    // ========== GRADE 11 ==========
+    "gr11_post_secondary": [
+      { url: "https://drive.google.com/university-planning.pdf", label: "University Program Research & Career Plan" }
+    ],
+    "gr11_academic": [
+      { url: "https://drive.google.com/grade11-report-card.pdf", label: "Grade 11 Final Report Card" },
+      { url: "https://drive.google.com/chemistry-award.pdf", label: "Chemistry Excellence Award" }
+    ],
+    "gr11_stem_contest": [
+      { url: "https://drive.google.com/caribou-contest-result.pdf", label: "Caribou Math Contest - Certificate" }
+    ],
+    "gr11_science_project": [
+      { url: "https://drive.google.com/physics-egg-drop-report.pdf", label: "Physics Egg Drop - Engineering Report" }
+    ],
+    "gr11_tech_project": [
+      { url: "https://github.com/your-username/python-data-project", label: "Python Data Visualization (GitHub Repo)" }
+    ],
+    "gr11_community_leadership": [
+      { url: "https://drive.google.com/hospital-volunteer-cert.pdf", label: "Hospital Volunteer - 40 Hours Certificate" }
+    ],
+    "gr11_scitech_advanced": [
+      { url: "https://drive.google.com/skills-canada-competition.pdf", label: "Skills Canada Coding Competition - Participation" }
+    ],
+
+    // ========== GRADE 12 (CULMINATING) ==========
+    "gr12_resume_final": [
+      { url: "https://drive.google.com/final-resume-cover-2026.pdf", label: "Final Resume & Cover Letter - 2026" }
+    ],
+    "gr12_academic_final": [
+      { url: "https://drive.google.com/grade12-midterm-report.pdf", label: "Grade 12 Midterm Report" },
+      { url: "https://drive.google.com/scholarship-letter.pdf", label: "Entrance Scholarship Offer" }
+    ],
+    "gr12_contest_final": [
+      { url: "https://drive.google.com/sir-isaac-newton-exam.pdf", label: "Sir Isaac Newton Physics Exam - Certificate" }
+    ],
+    "gr12_science_capstone": [
+      { url: "https://drive.google.com/biology-soil-microbiome.pdf", label: "Biology Capstone: Soil Microbiome Investigation" },
+      { url: "https://photos.app.goo.gl/capstone-lab-photos", label: "Lab Photos & Data Collection" }
+    ],
+    "gr12_tech_capstone": [
+      { url: "https://github.com/your-username/ai-image-classifier", label: "AI Image Classifier - Final Project (GitHub)" },
+      { url: "https://drive.google.com/project-documentation.pdf", label: "Technical Documentation & Reflection" }
+    ],
+    "gr12_community_exec": [
+      { url: "https://drive.google.com/stem-outreach-leadership.pdf", label: "STEM Outreach Lead - Workshop Photos & Certificate" }
+    ],
+    "gr12_scitech_culmination": [
+      { url: "https://drive.google.com/hosa-competition-cert.pdf", label: "HOSA Competition - Certificate of Achievement" },
+      { url: "https://drive.google.com/premed-club-executive.pdf", label: "Pre-Med Club Executive Role - Evidence" }
+    ]
+  };
+
+  // =========================================================================
+  // ========== END OF LINKS DATABASE — DO NOT EDIT BELOW THIS LINE ==========
+  // =========================================================================
+
+  // Requirement structure (references the keys above)
   const requirementsStructure = {
     9: {
       personal: {
@@ -453,154 +542,69 @@
     }
   };
 
-  // Load from localStorage
-  function loadLinks() {
-    const stored = localStorage.getItem("scitech_multilink_v2");
-    if(stored) {
-      try {
-        multiLinkStorage = JSON.parse(stored);
-      } catch(e) {}
-    }
-    if(!multiLinkStorage) multiLinkStorage = {};
+  let currentGrade = 12;
+
+  function getLinksForRequirement(linkKey) {
+    return PERMANENT_LINKS[linkKey] || [];
   }
 
-  function saveLinks() {
-    localStorage.setItem("scitech_multilink_v2", JSON.stringify(multiLinkStorage));
-  }
-
-  function getLinks(linkKey) {
-    return multiLinkStorage[linkKey] || [];
-  }
-
-  function addLink(linkKey, url, label = "") {
-    if(!url || url.trim() === "") return false;
-    let links = getLinks(linkKey);
-    links.push({ url: url.trim(), label: label.trim() || null, addedAt: Date.now() });
-    multiLinkStorage[linkKey] = links;
-    saveLinks();
-    return true;
-  }
-
-  function updateLink(linkKey, index, newUrl, newLabel) {
-    let links = getLinks(linkKey);
-    if(links[index]) {
-      if(newUrl !== undefined) links[index].url = newUrl.trim();
-      if(newLabel !== undefined) links[index].label = newLabel.trim() || null;
-      multiLinkStorage[linkKey] = links;
-      saveLinks();
-    }
-  }
-
-  function deleteLink(linkKey, index) {
-    let links = getLinks(linkKey);
-    if(links[index]) {
-      links.splice(index, 1);
-      multiLinkStorage[linkKey] = links;
-      saveLinks();
-    }
-  }
-
-  function escapeHtml(str) {
-    if(!str) return '';
-    return str.replace(/[&<>]/g, function(m) {
-      if(m === '&') return '&amp;';
-      if(m === '<') return '&lt;';
-      if(m === '>') return '&gt;';
-      return m;
-    });
-  }
-
-  function truncateUrl(url, maxLen = 55) {
-    if(url.length <= maxLen) return url;
-    return url.substring(0, maxLen - 3) + "...";
-  }
-
-  // Render links for a specific requirement
   function renderLinksForRequirement(linkKey, containerId) {
-    const links = getLinks(linkKey);
+    const links = getLinksForRequirement(linkKey);
     const container = document.getElementById(containerId);
-    if(!container) return;
-    
-    if(links.length === 0) {
-      container.innerHTML = `<div class="empty-links"><i class="fas fa-info-circle"></i> No evidence links yet. Click "Add Link" below.</div>`;
+    if (!container) return;
+
+    if (links.length === 0) {
+      container.innerHTML = `<div class="empty-links"><i class="fas fa-info-circle"></i> No evidence links added yet. Edit the PERMANENT_LINKS object in the HTML to add your URLs.</div>`;
       return;
     }
-    
+
     let html = `<div class="links-list">`;
     links.forEach((link, idx) => {
       const displayLabel = link.label ? `${escapeHtml(link.label)} – ` : '';
       html += `
-        <div class="link-item" data-linkkey="${linkKey}" data-idx="${idx}">
+        <div class="link-item">
           <div class="link-url-display">
             ${displayLabel}<a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> ${truncateUrl(escapeHtml(link.url))}</a>
-          </div>
-          <div class="link-actions">
-            <button class="icon-btn edit-link-btn" data-linkkey="${linkKey}" data-idx="${idx}" data-url="${escapeHtml(link.url)}" data-label="${escapeHtml(link.label || '')}"><i class="fas fa-edit"></i> Edit</button>
-            <button class="icon-btn delete-link-btn" data-linkkey="${linkKey}" data-idx="${idx}"><i class="fas fa-trash-alt"></i> Delete</button>
           </div>
         </div>
       `;
     });
     html += `</div>`;
     container.innerHTML = html;
-    
-    // attach edit/delete events
-    container.querySelectorAll('.edit-link-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const lk = btn.getAttribute('data-linkkey');
-        const idx = parseInt(btn.getAttribute('data-idx'));
-        const currentUrl = btn.getAttribute('data-url');
-        const currentLabel = btn.getAttribute('data-label') || '';
-        const newUrl = prompt("Edit evidence URL (Google Drive, PDF, image, certificate):", currentUrl);
-        if(newUrl !== null && newUrl.trim() !== "") {
-          const newLabel = prompt("Optional label/title for this link (e.g., 'Lab Report PDF'):", currentLabel);
-          updateLink(lk, idx, newUrl, newLabel);
-          refreshCurrentGrade(); // refresh view
-        }
-      });
-    });
-    
-    container.querySelectorAll('.delete-link-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const lk = btn.getAttribute('data-linkkey');
-        const idx = parseInt(btn.getAttribute('data-idx'));
-        if(confirm("Remove this evidence link?")) {
-          deleteLink(lk, idx);
-          refreshCurrentGrade();
-        }
-      });
+  }
+
+  function truncateUrl(url, maxLen = 55) {
+    if (url.length <= maxLen) return url;
+    return url.substring(0, maxLen - 3) + "...";
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/[&<>]/g, function (m) {
+      if (m === '&') return '&amp;';
+      if (m === '<') return '&lt;';
+      if (m === '>') return '&gt;';
+      return m;
     });
   }
-  
-  // Function to add new link (prompt)
-  function promptAddLink(linkKey) {
-    let url = prompt("🔗 Paste evidence URL (Google Drive, PDF, photo, certificate, rubric):", "https://");
-    if(url && url.trim() !== "") {
-      let label = prompt("Optional label (e.g., 'Semester 1 Report Card', 'Project Photo'):", "");
-      addLink(linkKey, url, label || "");
-      refreshCurrentGrade();
-    }
-  }
-  
-  // Render a full section with all requirements and add-link buttons
+
   function renderSection(grade, sectionKey, sectionData) {
     let html = `<div class="section-card"><div class="section-header"><h2><i class="fas ${sectionKey === 'personal' ? 'fa-user-circle' : (sectionKey === 'skills' ? 'fa-microscope' : (sectionKey === 'community' ? 'fa-hand-holding-heart' : 'fa-microchip'))}"></i> ${sectionData.title}</h2></div><div class="requirement-list">`;
-    
-    for(let i=0; i<sectionData.items.length; i++) {
+
+    for (let i = 0; i < sectionData.items.length; i++) {
       const item = sectionData.items[i];
       const linkKey = item.linkKey;
       const uniqueContainerId = `links_${linkKey}`;
-      
+
       html += `
         <div class="req-item">
           <div class="req-title">
             <span>📌 ${escapeHtml(item.label)}</span>
-            <span class="req-badge">multiple links allowed</span>
+            <span class="req-badge">evidence links</span>
           </div>
           <div class="req-desc">${escapeHtml(item.description)}</div>
           <div class="links-container">
             <div id="${uniqueContainerId}" class="links-render-area"></div>
-            <button class="add-link-btn" data-linkkey="${linkKey}"><i class="fas fa-plus-circle"></i> + Add Evidence Link (URL)</button>
           </div>
         </div>
       `;
@@ -608,31 +612,25 @@
     html += `</div></div>`;
     return { html, linkKeys: sectionData.items.map(it => it.linkKey) };
   }
-  
-  let currentGrade = 12;
-  
-  function refreshCurrentGrade() {
-    renderGradeView(currentGrade);
-  }
-  
+
   function renderGradeView(gradeNum) {
     const structure = requirementsStructure[gradeNum];
-    if(!structure) {
+    if (!structure) {
       document.getElementById("dynamicPortfolioContent").innerHTML = `<div class="full-width-note">Requirements not available.</div>`;
       return;
     }
-    
+
     const leftPersonal = renderSection(gradeNum, "personal", structure.personal);
     const leftSkills = renderSection(gradeNum, "skills", structure.skills);
     const rightCommunity = renderSection(gradeNum, "community", structure.community);
     const rightScitech = renderSection(gradeNum, "scitechExtra", structure.scitechExtra);
-    
+
     let leftHtml = leftPersonal.html + leftSkills.html;
     let rightHtml = rightCommunity.html + rightScitech.html;
-    
+
     let extraNoteHtml = structure.note ? `<div class="full-width-note"><i class="fas fa-info-circle"></i> ${structure.note}</div>` : "";
     let gradReqHtml = structure.gradRequirement ? `<div class="full-width-note" style="background:#e6f4ea;border-left-color:#2e7d64;"><i class="fas fa-certificate"></i> ${structure.gradRequirement}</div>` : "";
-    
+
     const container = document.getElementById("dynamicPortfolioContent");
     container.innerHTML = `
       <div class="requirements-grid">
@@ -641,31 +639,25 @@
       </div>
       ${extraNoteHtml}
       ${gradReqHtml}
+      <div class="edit-hint">
+        <i class="fas fa-pen-fancy"></i> <strong>To update these links permanently:</strong> Open this HTML file in a text editor, find the <code>PERMANENT_LINKS</code> object (near the top of the &lt;script&gt; tag), and replace the placeholder URLs with your actual Google Drive, PDF, or photo links. Save and refresh.
+      </div>
     `;
-    
-    // render each requirement's links
+
+    // Render all links
     const allLinkKeys = [...leftPersonal.linkKeys, ...leftSkills.linkKeys, ...rightCommunity.linkKeys, ...rightScitech.linkKeys];
     allLinkKeys.forEach(linkKey => {
       const containerId = `links_${linkKey}`;
       renderLinksForRequirement(linkKey, containerId);
     });
-    
-    // attach add-link event listeners
-    document.querySelectorAll('.add-link-btn').forEach(btn => {
-      const lk = btn.getAttribute('data-linkkey');
-      // remove old listener
-      const newBtn = btn.cloneNode(true);
-      btn.parentNode.replaceChild(newBtn, btn);
-      newBtn.addEventListener('click', () => promptAddLink(lk));
-    });
   }
-  
+
   function initYearTabs() {
     const tabs = document.querySelectorAll(".year-btn");
     tabs.forEach(tab => {
       tab.addEventListener("click", (e) => {
         const grade = parseInt(tab.getAttribute("data-grade"));
-        if(!isNaN(grade)) {
+        if (!isNaN(grade)) {
           currentGrade = grade;
           tabs.forEach(btn => btn.classList.remove("active"));
           tab.classList.add("active");
@@ -674,9 +666,8 @@
       });
     });
   }
-  
+
   // Initialize
-  loadLinks();
   renderGradeView(12);
   initYearTabs();
 </script>
