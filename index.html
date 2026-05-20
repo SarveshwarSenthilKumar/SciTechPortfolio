@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Sarveshwar Senthil Kumar | SciTech Portfolio Nexus</title>
-  <!-- Google Fonts + Font Awesome -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <title>SciTech Portfolio | Sarveshwar Senthil Kumar | Master Requirements Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -15,580 +14,556 @@
     }
 
     body {
-      background: radial-gradient(circle at 10% 20%, #0a0f1f, #03060c);
+      background: #f0f4f8;
       font-family: 'Inter', sans-serif;
-      color: #edf2ff;
-      line-height: 1.5;
+      color: #1a2c3e;
+      line-height: 1.45;
       padding: 2rem 1.5rem;
     }
 
-    /* glassmorphic container */
-    .glass-panel {
-      backdrop-filter: blur(10px);
-      background: rgba(12, 20, 35, 0.55);
-      border: 1px solid rgba(0, 255, 255, 0.25);
-      border-radius: 2rem;
-      box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(0, 255, 255, 0.1);
-    }
-
+    /* professional clean container */
     .container {
-      max-width: 1400px;
+      max-width: 1300px;
       margin: 0 auto;
     }
 
-    /* header area */
-    .hero {
+    /* header card */
+    .header-card {
+      background: white;
+      border-radius: 1.25rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      padding: 1.5rem 2rem;
+      margin-bottom: 2rem;
+      border: 1px solid #e2e8f0;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 2rem;
-      padding: 1.5rem 2rem;
-      border-radius: 2rem;
-      background: linear-gradient(135deg, rgba(0, 30, 50, 0.7), rgba(2, 10, 22, 0.8));
-      border-bottom: 2px solid cyan;
-      box-shadow: 0 20px 35px -15px rgba(0,0,0,0.5);
     }
 
-    .badge-glow {
-      font-size: 0.75rem;
-      background: cyan;
-      color: #010514;
-      padding: 0.3rem 0.8rem;
-      border-radius: 40px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      display: inline-block;
-      box-shadow: 0 0 8px cyan;
+    .title-section h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #0f3b5c;
+      letter-spacing: -0.3px;
     }
 
-    h1 {
-      font-size: 2.4rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #FFFFFF, #7df9ff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      letter-spacing: -0.5px;
+    .title-section p {
+      color: #4a627a;
+      margin-top: 0.25rem;
     }
 
-    .student-meta {
+    .student-info {
       text-align: right;
-      font-weight: 400;
-      border-left: 2px solid cyan;
-      padding-left: 1.5rem;
+      background: #f8fafc;
+      padding: 0.75rem 1.25rem;
+      border-radius: 1rem;
+      border-left: 4px solid #2c7da0;
     }
 
-    .student-meta p {
+    .student-info p {
       margin: 0.2rem 0;
+      font-size: 0.9rem;
     }
 
-    /* Year Tabs - futuristic toggle */
+    /* year tabs */
     .year-tabs {
       display: flex;
-      gap: 1rem;
+      gap: 0.75rem;
       margin-bottom: 2rem;
       flex-wrap: wrap;
-      justify-content: center;
+      border-bottom: 1px solid #cbd5e1;
+      padding-bottom: 0.5rem;
     }
 
     .year-btn {
-      background: rgba(20, 30, 55, 0.7);
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(0, 255, 255, 0.4);
-      padding: 0.8rem 2rem;
-      font-size: 1.2rem;
-      font-weight: 700;
-      border-radius: 60px;
+      background: transparent;
+      border: none;
+      padding: 0.6rem 1.6rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 2rem;
       cursor: pointer;
-      transition: 0.25s ease;
-      color: #ccf4ff;
-      letter-spacing: 1px;
+      transition: all 0.2s;
+      color: #2c3e50;
+      font-family: 'Inter', sans-serif;
     }
 
     .year-btn i {
-      margin-right: 8px;
+      margin-right: 6px;
     }
 
     .year-btn.active {
-      background: #0cf;
-      border-color: white;
-      color: #0a0f1f;
-      box-shadow: 0 0 15px #0cf;
-      text-shadow: none;
+      background: #1f6392;
+      color: white;
+      box-shadow: 0 2px 8px rgba(31,99,146,0.2);
     }
 
     .year-btn:hover:not(.active) {
-      background: rgba(0, 200, 255, 0.2);
-      border-color: cyan;
-      transform: translateY(-3px);
+      background: #e2e8f0;
     }
 
-    /* dashboard grid */
-    .dashboard-grid {
+    /* main grid layout: 2 columns for requirement sections */
+    .requirements-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 1.8rem;
-      margin-bottom: 2.5rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.75rem;
+      margin-bottom: 2rem;
     }
 
-    .card {
-      background: rgba(8, 16, 28, 0.65);
-      border-radius: 1.6rem;
-      padding: 1.4rem 1.6rem;
-      transition: all 0.2s;
-      border: 1px solid rgba(0, 255, 255, 0.2);
-      backdrop-filter: blur(5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    .section-card {
+      background: white;
+      border-radius: 1.25rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      border: 1px solid #e2edf2;
+      overflow: hidden;
+      transition: 0.1s;
     }
 
-    .card:hover {
-      border-color: #0cf;
-      transform: translateY(-5px);
-      box-shadow: 0 20px 30px -12px rgba(0,200,255,0.2);
+    .section-header {
+      background: #f9fcff;
+      padding: 1rem 1.5rem;
+      border-bottom: 2px solid #cbdde9;
     }
 
-    .card h3 {
-      font-size: 1.5rem;
+    .section-header h2 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: #155f7c;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .requirement-list {
+      padding: 0.5rem 0;
+    }
+
+    .req-item {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid #ecf3f8;
+      transition: background 0.1s;
+    }
+
+    .req-item:last-child {
+      border-bottom: none;
+    }
+
+    .req-title {
       font-weight: 700;
-      margin-bottom: 1rem;
+      color: #1e4663;
+      margin-bottom: 0.5rem;
       display: flex;
       align-items: center;
-      gap: 0.6rem;
-      border-left: 4px solid #0cf;
-      padding-left: 0.7rem;
-    }
-
-    .checklist {
-      list-style: none;
-      margin: 1rem 0;
-    }
-
-    .checklist li {
-      margin: 0.75rem 0;
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-      font-size: 0.92rem;
-      font-weight: 400;
-    }
-
-    .checklist i.fa-check-circle {
-      color: #0cf;
-      font-size: 1.1rem;
-      min-width: 22px;
-    }
-
-    .checklist i.fa-plus-circle {
-      color: #ffb347;
-    }
-
-    .tag-extra {
-      font-size: 0.7rem;
-      background: #0cf22;
-      background: rgba(0, 255, 255, 0.2);
-      border-radius: 50px;
-      padding: 0.2rem 0.6rem;
-      margin-left: 8px;
-    }
-
-    .reflection-placeholder {
-      background: #0a101f;
-      border-radius: 1rem;
-      padding: 0.8rem;
-      margin-top: 1rem;
-      border-left: 3px solid cyan;
-      font-size: 0.85rem;
-    }
-
-    .link-bank {
-      margin-top: 2rem;
-      background: rgba(0, 20, 40, 0.7);
-      border-radius: 1.8rem;
-      padding: 1.5rem 2rem;
-    }
-
-    .link-grid {
-      display: flex;
+      justify-content: space-between;
       flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 1rem;
     }
 
-    .resource-link {
-      background: #0a1428;
-      padding: 0.6rem 1.2rem;
-      border-radius: 40px;
-      text-decoration: none;
-      color: #b3f0ff;
-      font-weight: 500;
-      border: 1px solid rgba(0,255,200,0.4);
-      transition: 0.2s;
-      display: inline-flex;
+    .req-badge {
+      font-size: 0.7rem;
+      background: #e6f4ff;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      color: #0077b6;
+    }
+
+    .req-desc {
+      font-size: 0.85rem;
+      color: #4b6f8c;
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+    }
+
+    /* editable slot styling */
+    .slot-container {
+      background: #fefdf7;
+      border-radius: 0.75rem;
+      padding: 0.7rem 1rem;
+      margin-top: 0.5rem;
+      border: 1px solid #e0edf5;
+      transition: 0.1s;
+    }
+
+    .slot-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #2c7da0;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.3rem;
+      display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
 
-    .resource-link:hover {
-      background: #0cf;
-      color: #03060c;
-      border-color: white;
-      transform: scale(1.02);
-      box-shadow: 0 0 12px cyan;
+    .slot-input, .slot-textarea, .slot-link-input {
+      width: 100%;
+      border: 1px solid #cbd5e1;
+      border-radius: 0.6rem;
+      padding: 0.5rem 0.75rem;
+      font-family: 'Inter', monospace;
+      font-size: 0.85rem;
+      background: white;
+      transition: 0.1s;
+    }
+
+    .slot-textarea {
+      resize: vertical;
+      min-height: 65px;
+    }
+
+    .slot-input:focus, .slot-textarea:focus, .slot-link-input:focus {
+      outline: none;
+      border-color: #2c7da0;
+      box-shadow: 0 0 0 2px rgba(44,125,160,0.1);
+    }
+
+    .flex-row {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .link-preview {
+      font-size: 0.7rem;
+      color: #1f6392;
+      word-break: break-all;
+    }
+
+    button.save-slot {
+      background: #eef2f6;
+      border: none;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.1s;
+      margin-top: 0.4rem;
+    }
+
+    button.save-slot:hover {
+      background: #cbdde9;
+    }
+
+    .evidence-hint {
+      font-size: 0.7rem;
+      color: #6c8dae;
+      margin-top: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    hr {
+      margin: 0.5rem 0;
+      border-color: #e9f0f5;
+    }
+
+    /* full-width extras */
+    .full-width-note {
+      background: #fef9e3;
+      border-left: 4px solid #f4b942;
+      padding: 1rem 1.5rem;
+      border-radius: 1rem;
+      font-size: 0.85rem;
+      margin-top: 1rem;
     }
 
     .footer-note {
       text-align: center;
       margin-top: 2rem;
       font-size: 0.75rem;
-      opacity: 0.7;
+      color: #5b7e9e;
+      border-top: 1px solid #cbdde9;
+      padding-top: 1.5rem;
     }
 
-    @media (max-width: 700px) {
-      body { padding: 1rem; }
-      .hero { flex-direction: column; text-align: center; gap: 1rem; }
-      .student-meta { text-align: center; border-left: none; border-top: 1px solid cyan; padding-top: 1rem; }
-    }
-
-    .btn-edit-link {
-      font-size: 0.7rem;
-      background: none;
-      border: none;
-      color: #ccc;
-      cursor: pointer;
-      margin-left: 10px;
+    @media (max-width: 800px) {
+      .requirements-grid {
+        grid-template-columns: 1fr;
+      }
+      .header-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+      .student-info {
+        text-align: center;
+      }
     }
   </style>
 </head>
 <body>
 <div class="container">
-  <!-- Hero Section -->
-  <div class="hero">
-    <div>
-      <span class="badge-glow"><i class="fas fa-microchip"></i> SciTech Certificate Candidate</span>
-      <h1><i class="fas fa-cube"></i> Portfolio Nexus</h1>
-      <p>Future-ready showcase • STEM excellence • Grade 12 culmination</p>
+  <!-- header with student identity -->
+  <div class="header-card">
+    <div class="title-section">
+      <h1><i class="fas fa-folder-open"></i> SciTech Portfolio Vault</h1>
+      <p>Ontario SciTech Certificate | 2025-2026 Update • Complete Evidence Tracker</p>
     </div>
-    <div class="student-meta">
-      <p><i class="fas fa-user-astronaut"></i> <strong>Sarveshwar Senthil Kumar</strong></p>
-      <p><i class="fas fa-id-card"></i> Student #: 997933</p>
-      <p><i class="fas fa-envelope"></i> sarveshwar313@gmail.com</p>
-      <p><i class="fas fa-calendar-alt"></i> Graduating Year: 2026</p>
+    <div class="student-info">
+      <p><strong><i class="fas fa-user-graduate"></i> Sarveshwar Senthil Kumar</strong></p>
+      <p><i class="fas fa-id-card"></i> Student #: 997933 &nbsp;|&nbsp; <i class="fas fa-envelope"></i> sarveshwar313@gmail.com</p>
+      <p><i class="fas fa-calendar-check"></i> Grade 12 | Graduating Year: 2026</p>
     </div>
   </div>
 
-  <!-- Year Tabs (Grade 9-12) -->
-  <div class="year-tabs">
-    <div class="year-btn" data-grade="9"><i class="fas fa-seedling"></i> Grade 9</div>
-    <div class="year-btn" data-grade="10"><i class="fas fa-chart-line"></i> Grade 10</div>
-    <div class="year-btn" data-grade="11"><i class="fas fa-rocket"></i> Grade 11</div>
-    <div class="year-btn active" data-grade="12"><i class="fas fa-crown"></i> Grade 12</div>
+  <!-- grade selector -->
+  <div class="year-tabs" id="yearTabs">
+    <button class="year-btn" data-grade="9"><i class="fas fa-seedling"></i> Grade 9</button>
+    <button class="year-btn" data-grade="10"><i class="fas fa-chart-line"></i> Grade 10</button>
+    <button class="year-btn" data-grade="11"><i class="fas fa-flask"></i> Grade 11</button>
+    <button class="year-btn active" data-grade="12"><i class="fas fa-trophy"></i> Grade 12 (Final)</button>
   </div>
 
-  <!-- Dynamic Content injected here -->
-  <div id="portfolioContent"></div>
+  <!-- dynamic content will be injected here -->
+  <div id="dynamicPortfolioContent"></div>
 
-  <!-- RESOURCE LINKS section (editable in real-time) -->
-  <div class="link-bank glass-panel">
-    <h3><i class="fas fa-link"></i> Smart Resource Hub <span style="font-size:0.8rem;">(click ✎ to edit URL)</span></h3>
-    <div id="linksContainer" class="link-grid"></div>
-    <div class="footer-note" style="margin-top:1rem;"><i class="fas fa-globe"></i> Customize any link — redirect to portfolios, certifications, drive folders, or contest hubs.</div>
-  </div>
   <div class="footer-note">
-    <i class="fas fa-check-circle"></i> Portfolio aligns with SciTech 2025-2026 Rubric • Peer-review ready • Reflections & evidence tracking
+    <i class="fas fa-check-double"></i> Based on SciTech Portfolio Instructions 2025-2026 • All slots editable, evidence can include photo links, drive links, rubrics • Peer-review ready
   </div>
 </div>
 
 <script>
-  // ------------------- DATA MODELS -------------------
-  // Grade-specific requirements based on PDF (9,10,11,12)
-  const gradeData = {
+  // ---------- DEFINE REQUIREMENTS + SLOTS FOR EACH GRADE (NO DEFAULT CONTENT) ----------
+  // each section: personal, skills, community, scitechExtra
+  // we provide placeholder structure with empty slots for user to fill
+  const gradeStructure = {
     9: {
-      personal: "Why I Took SciTech, Future Goals, Report Cards, Academic Achievements",
-      skills: "1 Science Project + Reflection, 1 Tech Project + Reflection, Safe Practices certs/quizzes",
-      community: "1 unique community work/extracurricular (volunteering/clubs) + reflection",
-      scitechExtra: "1 unique SciTech experience (Robotics/Science Fair/Coding Club etc) + reflection",
-      extraNote: "Max 1 SciTech Activity Postcard per year allowed if no other evidence."
+      personal: {
+        title: "Personal Information & Academic Achievement",
+        items: [
+          { label: "Why I Took SciTech (statement)", type: "textarea", placeholder: "Write your motivation for joining SciTech..." },
+          { label: "My Future Goals (post-secondary/career)", type: "textarea", placeholder: "e.g., Engineering, Health Sciences, Research..." },
+          { label: "Evidence for Academic Achievement", type: "linkGroup", placeholder: "Report card PDF / certificate link", linkKey: "academicEvidence9" },
+          { label: "Additional Artifact (optional)", type: "text", placeholder: "Awards / recognition" }
+        ]
+      },
+      skills: {
+        title: "SciTech Skills, Knowledge & Certifications",
+        items: [
+          { label: "Science Project #1 (student-designed experiment/investigation)", type: "projectSlot", fields: ["projectTitle", "reflection"], placeholderTitle: "e.g., Effect of light on plant growth", placeholderReflect: "What I enjoyed, challenges, insights..." },
+          { label: "Technology Project #1 (completed project)", type: "projectSlot", fields: ["techTitle", "techReflection"], placeholderTitle: "e.g., Cardboard VR prototype", placeholderReflect: "Design process, tools used, outcome..." },
+          { label: "Safe Practices Evidence (science/tech classrooms)", type: "linkGroup", placeholder: "Quiz score, certificate link, WHMIS test", linkKey: "safetyCert9" }
+        ]
+      },
+      community: {
+        title: "Community Work & Extracurricular Involvement",
+        items: [
+          { label: "Unique community/extracurricular item", type: "communitySlot", fields: ["activityName", "reflection"], placeholderActivity: "e.g., Library volunteer, environmental club", placeholderReflect: "Role, hours, impact, growth..." }
+        ]
+      },
+      scitechExtra: {
+        title: "Extracurricular SciTech Experiences",
+        items: [
+          { label: "Unique SciTech experience (Robotics, Coding Club, Science Fair, etc.)", type: "scitechSlot", fields: ["experienceName", "reflection"], placeholderExp: "e.g., Regional Science Fair, Rocketry team", placeholderReflect: "Teamwork, problem-solving, technical skills..." }
+        ]
+      },
+      extraNote: "Max one SciTech Activity Postcard per year if no other evidence. Field trips do not count."
     },
     10: {
-      personal: "Academic Evidence + Career Investigation Summary (MyBlueprint/Career Cruising) + Updated Resume & Cover Letter",
-      skills: "1 Science Project (student-designed) + reflection, 1 Tech Project + reflection, Safe Practices evidence",
-      community: "1 unique item showing growth from Gr9 (community/extracurricular) + reflection",
-      scitechExtra: "1 unique item showing growth from Gr9 (SciTech experience) + reflection"
+      personal: { title: "Personal Info & Career Prep", items: [ { label: "Evidence for Academic Achievement (report cards/certs)", type: "linkGroup", placeholder: "Report card link / screenshot", linkKey: "academic10" }, { label: "Career Investigation Summary (MyBlueprint / Career Cruising)", type: "textarea", placeholder: "Summarize career pathways, skills explored..." }, { label: "Updated Resume & Cover Letter", type: "linkGroup", placeholder: "Link to PDF resume / Google Doc", linkKey: "resume10" } ] },
+      skills: { title: "SciTech Skills (Growth from Gr9)", items: [ { label: "Science Project (student-designed) + Reflection", type: "projectSlot", fields: ["science10Title", "science10Ref"], placeholderTitle: "Investigation topic", placeholderReflect: "Method, results, what you learned" }, { label: "Technology Project + Reflection", type: "projectSlot", fields: ["tech10Title", "tech10Ref"], placeholderTitle: "Tech prototype / app / CAD", placeholderReflect: "Iteration, challenges, skills" }, { label: "Safe Practices Evidence (updated)", type: "linkGroup", placeholder: "Certificate or quiz link", linkKey: "safety10" } ] },
+      community: { title: "Community Work (Growth evident)", items: [ { label: "Organized community/extracurricular (growth from gr9)", type: "communitySlot", fields: ["comm10Name", "comm10Ref"], placeholderActivity: "e.g., Peer tutoring, hospital volunteer", placeholderReflect: "Increased responsibility, new insights" } ] },
+      scitechExtra: { title: "SciTech Extracurricular (Growth from gr9)", items: [ { label: "Unique SciTech experience with growth", type: "scitechSlot", fields: ["scitech10Name", "scitech10Ref"], placeholderExp: "e.g., Skills Canada regional", placeholderReflect: "Advanced role, competition lessons" } ] }
     },
     11: {
-      personal: "Post-Secondary & Career Plans, Academic Achievement (report cards/certs)",
-      skills: "Participation in PCSS STEM contest + 1 Science Project reflection + 1 Tech Project reflection",
-      community: "1 unique organized community/extracurricular w/ growth from gr10 + reflection",
-      scitechExtra: "1 unique SciTech experience w/ growth from gr10 + reflection"
+      personal: { title: "Post-Secondary & Career Plans", items: [ { label: "Post-Secondary Plans (university/college/apprenticeship)", type: "textarea", placeholder: "Programs, schools, career interests" }, { label: "Evidence for Academic Achievement (gr11)", type: "linkGroup", placeholder: "Report card, scholarship certificates", linkKey: "academic11" } ] },
+      skills: { title: "STEM Contest & Projects", items: [ { label: "STEM related contest at PCSS (Caribou, Waterloo, Science Fair, HOSA etc.)", type: "contestSlot", fields: ["contestName", "contestRef"], placeholderContest: "Contest name & level", placeholderReflect: "Preparation, score, learnings" }, { label: "Science Project + Reflection", type: "projectSlot", fields: ["science11Title","science11Ref"], placeholderTitle: "Advanced investigation", placeholderReflect: "Hypothesis, analysis, real-world connection" }, { label: "Technology Project + Reflection", type: "projectSlot", fields: ["tech11Title","tech11Ref"], placeholderTitle: "Tech innovation / coding project", placeholderReflect: "Engineering design process" } ] },
+      community: { title: "Community Work (Gr11 Growth)", items: [ { label: "Organized community / extracurricular with growth from gr10", type: "communitySlot", fields: ["comm11Name","comm11Ref"], placeholderActivity: "Leadership role / ongoing commitment", placeholderReflect: "How you progressed" } ] },
+      scitechExtra: { title: "SciTech Experiences (Gr11 Growth)", items: [ { label: "Unique SciTech item showing growth from gr10", type: "scitechSlot", fields: ["scitech11Name","scitech11Ref"], placeholderExp: "Robotics leadership / advanced competition", placeholderReflect: "Mentorship, technical depth" } ] }
     },
     12: {
-      personal: "Updated Resume & Cover Letter (Employability Skills), Academic Evidence",
-      skills: "Participation in PCSS STEM contest + 1 Science Project reflection + 1 Tech Project reflection",
-      community: "1 unique organized community/extracurricular (growth from gr11) + reflection",
-      scitechExtra: "1 unique SciTech experience (growth from gr11) + reflection",
-      gradNote: "Final portfolio presentation required for SciTech Certificate."
+      personal: { title: "Final Career & Employability", items: [ { label: "Updated Resume & Cover Letter (employability skills)", type: "linkGroup", placeholder: "Google Drive / PDF link", linkKey: "resumeFinal" }, { label: "Evidence for Academic Achievement (gr12 report cards / certs)", type: "linkGroup", placeholder: "Midterm/final report cards", linkKey: "academic12" } ] },
+      skills: { title: "STEM Contest & Capstone Projects", items: [ { label: "STEM related contest at PCSS (Grade 12 participation)", type: "contestSlot", fields: ["contest12Name","contest12Ref"], placeholderContest: "Contest & achievement", placeholderReflect: "Skills applied" }, { label: "Science Project (final year investigation)", type: "projectSlot", fields: ["science12Title","science12Ref"], placeholderTitle: "Independent research", placeholderReflect: "Advanced inquiry" }, { label: "Technology Project (final showcase)", type: "projectSlot", fields: ["tech12Title","tech12Ref"], placeholderTitle: "Portfolio-ready creation", placeholderReflect: "Reflection on engineering journey" } ] },
+      community: { title: "Community Work (Grade 12 growth & leadership)", items: [ { label: "Unique organized community/extracurricular showing growth from gr11", type: "communitySlot", fields: ["comm12Name","comm12Ref"], placeholderActivity: "Exec role, long-term volunteering", placeholderReflect: "Impact and responsibility" } ] },
+      scitechExtra: { title: "SciTech Extracurricular (Culminating)", items: [ { label: "Unique SciTech experience growth from gr11", type: "scitechSlot", fields: ["scitech12Name","scitech12Ref"], placeholderExp: "HOSA executive, Pre-Med club, Solar car", placeholderReflect: "Showcase expertise and leadership" } ] },
+      gradRequirement: "Portfolio presentation to staff required for SciTech Certificate – Meets/Exceeds Expectations on rubric."
     }
   };
 
-  // Helper: build checklist items with icons
-  function buildChecklist(gradeNum) {
-    const data = gradeData[gradeNum];
-    if (!data) return [];
-    const items = [];
-    items.push({ icon: "fas fa-user", text: `Personal Info: ${data.personal}`, required: true });
-    items.push({ icon: "fas fa-flask", text: `SciTech Skills & Certs: ${data.skills}`, required: true });
-    items.push({ icon: "fas fa-hands-helping", text: `Community Work & Extracurricular: ${data.community}`, required: true });
-    items.push({ icon: "fas fa-microchip", text: `Extracurricular SciTech Experiences: ${data.scitechExtra}`, required: true });
-    if (gradeNum === 12) items.push({ icon: "fas fa-trophy", text: `GRADUATION REQUIREMENT: Full portfolio presentation to staff`, required: true });
-    if (data.extraNote) items.push({ icon: "fas fa-info-circle", text: `Note: ${data.extraNote}`, required: false });
-    if (data.gradNote) items.push({ icon: "fas fa-certificate", text: data.gradNote, required: true });
-    return items;
+  // Storage keys
+  let portfolioData = {};
+
+  function loadStorage() {
+    const stored = localStorage.getItem("scitech_portfolio_v2");
+    if(stored) {
+      try {
+        portfolioData = JSON.parse(stored);
+      } catch(e) {}
+    }
+    if(!portfolioData) portfolioData = {};
   }
 
-  // get custom reflections and evidence tracking from localStorage or default seeds
-  let reflectionsStore = {
-    9: { scienceRef: "Designed a hydroponics investigation – loved observing pH impact. Challenge: controlling variables.", techRef: "Built a simple arduino LED circuit – first coding experience.", communityRef: "Volunteered at local library tech help – improved patience.", scitechRef: "Attended robotics club intro – learned teamwork." },
-    10: { scienceRef: "Chemical reaction rates experiment – enjoyed data analysis. Most challenging: precise measurements.", techRef: "CAD design of phone stand – learned iterative prototyping.", communityRef: "Peer tutoring in math – growth in leadership.", scitechRef: "Participated in regional science fair – presented project on water filtration." },
-    11: { scienceRef: "Physics egg drop contraption – insights on energy absorption.", techRef: "Python data visualization project – explored pandas/matplotlib.", communityRef: "Hospital volunteering (virtual) – developed empathy & organization.", scitechRef: "Skills Canada coding competition – real-world problem solving." },
-    12: { scienceRef: "Independent biology investigation: soil microbiome – insightful but challenging lab protocols.", techRef: "AI image classifier using TensorFlow – boosted ML confidence.", communityRef: "STEM outreach lead for middle school workshops – growth: public speaking.", scitechRef: "HOSA competition & Pre-Med club executive – refined healthcare focus." }
-  };
+  function saveToStorage() {
+    localStorage.setItem("scitech_portfolio_v2", JSON.stringify(portfolioData));
+  }
 
-  // Helper to render the grade view
-  function renderGrade(gradeNum) {
-    const grade = parseInt(gradeNum);
-    const items = buildChecklist(grade);
-    const store = reflectionsStore[grade] || {};
-    
+  function getValue(grade, section, fieldId, defaultValue = "") {
+    return portfolioData?.[grade]?.[section]?.[fieldId] ?? defaultValue;
+  }
+
+  function setValue(grade, section, fieldId, value) {
+    if(!portfolioData[grade]) portfolioData[grade] = {};
+    if(!portfolioData[grade][section]) portfolioData[grade][section] = {};
+    portfolioData[grade][section][fieldId] = value;
+    saveToStorage();
+  }
+
+  // helpers to generate editable slots
+  function renderLinkGroup(grade, section, linkKey, placeholderText) {
+    const currentUrl = getValue(grade, section, linkKey, "");
+    const uniqueId = `link_${grade}_${section}_${linkKey}`;
     return `
-      <div class="dashboard-grid">
-        <!-- Card: SciTech Skills & Projects -->
-        <div class="card">
-          <h3><i class="fas fa-vial"></i> Science & Tech Core</h3>
-          <ul class="checklist">
-            <li><i class="fas fa-check-circle"></i> Science Project: <span class="tag-extra">reflection included</span></li>
-            <li><i class="fas fa-comment-dots"></i> <strong>Reflection:</strong> ${escapeHtml(store.scienceRef || 'Add your insight about experiment/investigation...')}</li>
-            <li><i class="fas fa-check-circle"></i> Technology Project: <span class="tag-extra">artifact ready</span></li>
-            <li><i class="fas fa-comment-dots"></i> <strong>Reflection:</strong> ${escapeHtml(store.techRef || 'Design process, challenge, outcome...')}</li>
-            <li><i class="fas fa-shield-alt"></i> Safe Practices (tests/quizzes/certs) ✔️</li>
-            ${grade >= 11 ? '<li><i class="fas fa-trophy"></i> STEM Contest (PCSS): Caribou/Waterloo/Science Fair ✔️</li>' : ''}
-          </ul>
-          <div class="reflection-placeholder">
-            <i class="fas fa-pen-fancy"></i> <strong>Edit reflections anytime</strong> — click the ✏️ below to update.
-          </div>
-        </div>
-
-        <!-- Card: Community & Extracurricular -->
-        <div class="card">
-          <h3><i class="fas fa-hand-sparkles"></i> Community & Growth</h3>
-          <ul class="checklist">
-            <li><i class="fas fa-leaf"></i> Unique community item (growth from previous grade):</li>
-            <li><i class="fas fa-quote-right"></i> <strong>Reflection:</strong> ${escapeHtml(store.communityRef || 'Describe your volunteer work, club leadership, or event...')}</li>
-            <li><i class="fas fa-check-circle"></i> Evidence: signed postcard / photo / certificate</li>
-          </ul>
-          <div class="reflection-placeholder">
-            <i class="fas fa-chart-simple"></i> Shows growth & OSSD extracurricular values.
-          </div>
-        </div>
-
-        <!-- Card: SciTech Extracurricular Experiences -->
-        <div class="card">
-          <h3><i class="fas fa-robot"></i> SciTech Exclusive</h3>
-          <ul class="checklist">
-            <li><i class="fas fa-microscope"></i> Unique SciTech experience (competition/club/council):</li>
-            <li><i class="fas fa-comment"></i> <strong>Reflection:</strong> ${escapeHtml(store.scitechRef || 'Robotics, Science Fair, Coding Club, HOSA, Pre-Med, Solar Car...')}</li>
-            <li><i class="fas fa-certificate"></i> Must be organized by formal organization + proof.</li>
-            ${grade === 12 ? '<li><i class="fas fa-star-of-life"></i> Final portfolio presentation scheduled ✔️</li>' : ''}
-          </ul>
-        </div>
-
-        <!-- Card: Personal Info & Career -->
-        <div class="card">
-          <h3><i class="fas fa-id-card"></i> Portfolio Essentials</h3>
-          <ul class="checklist">
-            <li><i class="fas fa-address-card"></i> ${grade === 9 ? 'Why I took SciTech, Future Goals' : (grade === 10 ? 'Career Investigation (MyBlueprint) + Resume/Cover Letter' : (grade === 11 ? 'Post-Secondary Plans, Report Cards' : 'Updated Resume & Cover Letter, Employability Skills'))}</li>
-            <li><i class="fas fa-chart-simple"></i> Academic Achievement: report cards, certificates, awards</li>
-            <li><i class="fas fa-folder-open"></i> Portfolio structure: Binder/digital with dividers & rubric assessment</li>
-            ${grade === 12 ? '<li><i class="fas fa-check-double"></i> <strong>Rubric : Meets/Exceeds Expectations required for SciTech Certificate</strong></li>' : ''}
-          </ul>
-          <div class="reflection-placeholder">
-            <i class="fas fa-lightbulb"></i> Ensure artifact evidence includes photos/rubrics/signed postcards (max 1 per year).
-          </div>
-        </div>
-      </div>
-      <!-- editable reflections panel (inline update) -->
-      <div style="background: rgba(0,30,45,0.6); border-radius: 1.5rem; padding: 1.2rem; margin: 1rem 0;">
-        <h4 style="display: flex; gap: 12px; align-items:center;"><i class="fas fa-edit"></i> Customize Your Reflections for Grade ${grade}</h4>
-        <div style="display: grid; gap: 1rem; margin-top: 12px;">
-          <div><label style="font-weight:600;">🧪 Science Project Reflection:</label><br><textarea id="editScienceRef" rows="2" style="width:100%; background:#0c1324; border:1px solid #0cf; color:white; border-radius: 16px; padding: 8px;">${escapeHtml(store.scienceRef || '')}</textarea></div>
-          <div><label style="font-weight:600;">💻 Technology Project Reflection:</label><br><textarea id="editTechRef" rows="2" style="width:100%; background:#0c1324; border:1px solid #0cf; color:white; border-radius: 16px; padding: 8px;">${escapeHtml(store.techRef || '')}</textarea></div>
-          <div><label style="font-weight:600;">🤝 Community Work Reflection:</label><br><textarea id="editCommunityRef" rows="2" style="width:100%; background:#0c1324; border:1px solid #0cf; color:white; border-radius: 16px; padding: 8px;">${escapeHtml(store.communityRef || '')}</textarea></div>
-          <div><label style="font-weight:600;">🚀 SciTech Extracurricular Reflection:</label><br><textarea id="editScitechRef" rows="2" style="width:100%; background:#0c1324; border:1px solid #0cf; color:white; border-radius: 16px; padding: 8px;">${escapeHtml(store.scitechRef || '')}</textarea></div>
-          <div><button id="saveReflectionsBtn" data-grade="${grade}" style="background:#0cf; border:none; padding: 8px 20px; border-radius: 40px; font-weight:bold; color:#000; cursor:pointer;"><i class="fas fa-save"></i> Save Reflections & Evidence Notes</button></div>
-        </div>
+      <div class="slot-container">
+        <div class="slot-label"><i class="fas fa-link"></i> Evidence Link / File URL</div>
+        <input type="text" id="${uniqueId}" class="slot-link-input" placeholder="${placeholderText}" value="${escapeHtml(currentUrl)}">
+        <div class="evidence-hint"><i class="fas fa-info-circle"></i> Paste direct link to rubric, photo, PDF, Google Drive, or certificate.</div>
+        <button class="save-slot" data-grade="${grade}" data-section="${section}" data-field="${linkKey}" data-inputid="${uniqueId}"><i class="fas fa-save"></i> Save Link</button>
       </div>
     `;
   }
 
+  function renderProjectSlot(grade, section, titleField, reflectField, titlePlaceholder, reflectPlaceholder) {
+    const titleVal = getValue(grade, section, titleField, "");
+    const reflectVal = getValue(grade, section, reflectField, "");
+    const idTitle = `proj_${grade}_${section}_${titleField}`;
+    const idReflect = `ref_${grade}_${section}_${reflectField}`;
+    return `
+      <div class="slot-container">
+        <div class="slot-label"><i class="fas fa-microscope"></i> Project Title / Name</div>
+        <input type="text" id="${idTitle}" class="slot-input" placeholder="${titlePlaceholder}" value="${escapeHtml(titleVal)}">
+        <div class="slot-label" style="margin-top:8px;"><i class="fas fa-comment"></i> Reflection (enjoyed, challenges, insights)</div>
+        <textarea id="${idReflect}" class="slot-textarea" placeholder="${reflectPlaceholder}">${escapeHtml(reflectVal)}</textarea>
+        <button class="save-slot" data-grade="${grade}" data-section="${section}" data-field="${titleField}" data-inputid="${idTitle}" data-second-field="${reflectField}" data-second-id="${idReflect}"><i class="fas fa-save"></i> Save Project & Reflection</button>
+      </div>
+    `;
+  }
+
+  function renderGenericSlot(grade, section, nameField, reflectField, namePlaceholder, reflectPlaceholder, icon="fas fa-star") {
+    const nameVal = getValue(grade, section, nameField, "");
+    const reflectVal = getValue(grade, section, reflectField, "");
+    const idName = `gen_${grade}_${section}_${nameField}`;
+    const idRef = `genRef_${grade}_${section}_${reflectField}`;
+    return `
+      <div class="slot-container">
+        <div class="slot-label"><i class="${icon}"></i> Activity / Experience Name</div>
+        <input type="text" id="${idName}" class="slot-input" placeholder="${namePlaceholder}" value="${escapeHtml(nameVal)}">
+        <div class="slot-label" style="margin-top:6px;"><i class="fas fa-pen"></i> Reflection (growth, role, hours, insights)</div>
+        <textarea id="${idRef}" class="slot-textarea" placeholder="${reflectPlaceholder}">${escapeHtml(reflectVal)}</textarea>
+        <button class="save-slot" data-grade="${grade}" data-section="${section}" data-field="${nameField}" data-inputid="${idName}" data-second-field="${reflectField}" data-second-id="${idRef}"><i class="fas fa-save"></i> Save Entry</button>
+      </div>
+    `;
+  }
+
+  function renderContestSlot(grade, section, contestField, reflectField, placeholderContest, placeholderReflect) {
+    return renderGenericSlot(grade, section, contestField, reflectField, placeholderContest, placeholderReflect, "fas fa-trophy");
+  }
+
   function escapeHtml(str) { if(!str) return ''; return str.replace(/[&<>]/g, function(m){if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
 
-  // ---------- Resource Links Manager (editable urls & labels) ----------
-  let defaultLinks = [
-    { label: "📘 MyBlueprint / Career Cruising", url: "https://www.myblueprint.ca/", editable: true },
-    { label: "🏆 Waterloo Math Contests", url: "https://cemc.uwaterloo.ca/contests", editable: true },
-    { label: "🤖 Robotics Club Hub", url: "https://www.firstroboticscanada.org/", editable: true },
-    { label: "🔬 SciTech Portfolio Drive", url: "https://drive.google.com/", editable: true },
-    { label: "📝 SciTech Rubric & Forms", url: "#", editable: true, placeholder: "paste rubric link" },
-    { label: "⚙️ Skills Canada ON", url: "https://www.skillscanada.com/", editable: true },
-    { label: "🧪 HOSA Future Health Professionals", url: "https://hosa.org/", editable: true },
-    { label: "📎 Ontario Skills Passport", url: "https://www.skillspassport.ca/", editable: true }
-  ];
-
-  let resourceLinks = [...defaultLinks];
-
-  function saveLinksToLocal() {
-    localStorage.setItem("scitech_links", JSON.stringify(resourceLinks));
-  }
-
-  function loadLinksFromLocal() {
-    const stored = localStorage.getItem("scitech_links");
-    if(stored) {
-      try{
-        resourceLinks = JSON.parse(stored);
-      }catch(e){}
-    } else {
-      resourceLinks = [...defaultLinks];
-    }
-    renderLinkBank();
-  }
-
-  function renderLinkBank() {
-    const container = document.getElementById("linksContainer");
-    if(!container) return;
-    container.innerHTML = "";
-    resourceLinks.forEach((link, idx) => {
-      const linkDiv = document.createElement("div");
-      linkDiv.className = "resource-link";
-      linkDiv.style.display = "inline-flex";
-      linkDiv.style.alignItems = "center";
-      linkDiv.style.gap = "6px";
-      const anchor = document.createElement("a");
-      anchor.href = link.url;
-      anchor.target = "_blank";
-      anchor.rel = "noopener noreferrer";
-      anchor.style.textDecoration = "none";
-      anchor.style.color = "inherit";
-      anchor.style.display = "inline-flex";
-      anchor.style.alignItems = "center";
-      anchor.style.gap = "5px";
-      anchor.innerHTML = `${link.label} <i class="fas fa-external-link-alt" style="font-size:0.7rem;"></i>`;
-      const editBtn = document.createElement("button");
-      editBtn.innerHTML = '<i class="fas fa-pencil-alt"></i>';
-      editBtn.className = "btn-edit-link";
-      editBtn.style.marginLeft = "8px";
-      editBtn.style.background = "#1e2a4a";
-      editBtn.style.border = "none";
-      editBtn.style.borderRadius = "30px";
-      editBtn.style.padding = "2px 8px";
-      editBtn.style.cursor = "pointer";
-      editBtn.style.color = "#0cf";
-      editBtn.title = "Edit link URL or label";
-      editBtn.onclick = (e) => {
-        e.preventDefault();
-        const newLabel = prompt("Enter new label:", link.label);
-        const newUrl = prompt("Enter URL (include https://):", link.url);
-        if(newLabel !== null && newUrl !== null) {
-          resourceLinks[idx] = { ...resourceLinks[idx], label: newLabel, url: newUrl };
-          saveLinksToLocal();
-          renderLinkBank();
-        }
-      };
-      linkDiv.appendChild(anchor);
-      if(link.editable !== false) linkDiv.appendChild(editBtn);
-      container.appendChild(linkDiv);
-    });
-    // add "add new link" button
-    const addBtn = document.createElement("div");
-    addBtn.className = "resource-link";
-    addBtn.style.background = "#0f212f";
-    addBtn.style.cursor = "pointer";
-    addBtn.innerHTML = '<i class="fas fa-plus-circle"></i> Add Resource';
-    addBtn.onclick = () => {
-      const label = prompt("Link label:", "New Contest Hub");
-      const url = prompt("URL:", "https://");
-      if(label && url) {
-        resourceLinks.push({ label: label, url: url, editable: true });
-        saveLinksToLocal();
-        renderLinkBank();
+  function renderSection(grade, sectionKey, sectionData) {
+    let html = `<div class="section-card"><div class="section-header"><h2><i class="fas ${sectionKey === 'personal' ? 'fa-user' : (sectionKey === 'skills' ? 'fa-brain' : (sectionKey === 'community' ? 'fa-hand-holding-heart' : 'fa-microchip'))}"></i> ${sectionData.title}</h2></div><div class="requirement-list">`;
+    for(let idx=0; idx<sectionData.items.length; idx++) {
+      const item = sectionData.items[idx];
+      html += `<div class="req-item"><div class="req-title"><span>📌 ${item.label}</span><span class="req-badge">required</span></div><div class="req-desc"></div>`;
+      if(item.type === "linkGroup") {
+        html += renderLinkGroup(grade, sectionKey, item.linkKey, item.placeholder);
+      } else if(item.type === "projectSlot") {
+        html += renderProjectSlot(grade, sectionKey, item.fields[0], item.fields[1], item.placeholderTitle, item.placeholderReflect);
+      } else if(item.type === "communitySlot") {
+        html += renderGenericSlot(grade, sectionKey, item.fields[0], item.fields[1], item.placeholderActivity, item.placeholderReflect, "fas fa-hands-helping");
+      } else if(item.type === "scitechSlot") {
+        html += renderGenericSlot(grade, sectionKey, item.fields[0], item.fields[1], item.placeholderExp, item.placeholderReflect, "fas fa-robot");
+      } else if(item.type === "contestSlot") {
+        html += renderContestSlot(grade, sectionKey, item.fields[0], item.fields[1], item.placeholderContest, item.placeholderReflect);
+      } else if(item.type === "textarea") {
+        const val = getValue(grade, sectionKey, `textarea_${idx}`, "");
+        const textId = `text_${grade}_${sectionKey}_${idx}`;
+        html += `<div class="slot-container"><textarea id="${textId}" class="slot-textarea" placeholder="${item.placeholder}">${escapeHtml(val)}</textarea><button class="save-slot" data-grade="${grade}" data-section="${sectionKey}" data-field="textarea_${idx}" data-inputid="${textId}"><i class="fas fa-save"></i> Save</button></div>`;
+      } else if(item.type === "text") {
+        const val = getValue(grade, sectionKey, `text_${idx}`, "");
+        const textId = `inp_${grade}_${sectionKey}_${idx}`;
+        html += `<div class="slot-container"><input type="text" id="${textId}" class="slot-input" placeholder="${item.placeholder}" value="${escapeHtml(val)}"><button class="save-slot" data-grade="${grade}" data-section="${sectionKey}" data-field="text_${idx}" data-inputid="${textId}"><i class="fas fa-save"></i> Save</button></div>`;
       }
-    };
-    container.appendChild(addBtn);
-  }
-
-  // handle reflection saving
-  function attachReflectionSaveHandler(grade) {
-    const saveBtn = document.getElementById("saveReflectionsBtn");
-    if(saveBtn) {
-      const newSave = saveBtn.cloneNode(true);
-      saveBtn.parentNode.replaceChild(newSave, saveBtn);
-      newSave.addEventListener("click", () => {
-        const scienceRef = document.getElementById("editScienceRef")?.value || "";
-        const techRef = document.getElementById("editTechRef")?.value || "";
-        const communityRef = document.getElementById("editCommunityRef")?.value || "";
-        const scitechRef = document.getElementById("editScitechRef")?.value || "";
-        reflectionsStore[grade] = {
-          scienceRef, techRef, communityRef, scitechRef
-        };
-        localStorage.setItem("scitech_reflections", JSON.stringify(reflectionsStore));
-        // re-render same grade to show updated reflections in cards
-        renderGradeView(grade);
-        // optional flash message
-        const msg = document.createElement("div");
-        msg.innerText = "✓ Reflections saved!";
-        msg.style.position = "fixed"; msg.style.bottom = "20px"; msg.style.right="20px"; msg.style.background="#0cf"; msg.style.color="#000"; msg.style.padding="8px 18px"; msg.style.borderRadius="40px"; msg.style.fontWeight="bold";
-        document.body.appendChild(msg);
-        setTimeout(()=>msg.remove(), 1800);
-      });
+      html += `</div>`;
     }
-  }
-  
-  let currentGrade = 12;
-
-  function renderGradeView(grade) {
-    const contentDiv = document.getElementById("portfolioContent");
-    if(contentDiv) {
-      contentDiv.innerHTML = renderGrade(grade);
-      attachReflectionSaveHandler(grade);
-      // update active tab style
-      document.querySelectorAll(".year-btn").forEach(btn => {
-        if(parseInt(btn.getAttribute("data-grade")) === grade) btn.classList.add("active");
-        else btn.classList.remove("active");
-      });
-    }
+    html += `</div></div>`;
+    return html;
   }
 
-  // load stored reflections from localStorage
-  function loadReflections() {
-    const storedRefs = localStorage.getItem("scitech_reflections");
-    if(storedRefs) {
-      try {
-        const parsed = JSON.parse(storedRefs);
-        reflectionsStore = { ...reflectionsStore, ...parsed };
-      }catch(e){}
+  function renderFullGrade(gradeNum) {
+    const gradeKey = gradeNum;
+    const structure = gradeStructure[gradeKey];
+    if(!structure) return `<div class="full-width-note">Requirements not defined for this grade.</div>`;
+    let leftCol = [];
+    let rightCol = [];
+    // personal + skills on left? we assign personal + skills left, community + scitechExtra right
+    leftCol.push(renderSection(gradeKey, "personal", structure.personal));
+    leftCol.push(renderSection(gradeKey, "skills", structure.skills));
+    rightCol.push(renderSection(gradeKey, "community", structure.community));
+    rightCol.push(renderSection(gradeKey, "scitechExtra", structure.scitechExtra));
+    let extraNoteHtml = structure.extraNote ? `<div class="full-width-note"><i class="fas fa-info-circle"></i> ${structure.extraNote}</div>` : "";
+    let gradReqHtml = structure.gradRequirement ? `<div class="full-width-note" style="background:#e6f4ea;border-left-color:#2e7d64;"><i class="fas fa-certificate"></i> ${structure.gradRequirement}</div>` : "";
+    return `
+      <div class="requirements-grid">
+        <div>${leftCol.join('')}</div>
+        <div>${rightCol.join('')}</div>
+      </div>
+      ${extraNoteHtml}
+      ${gradReqHtml}
+    `;
+  }
+
+  function attachGlobalSaveListener() {
+    document.querySelectorAll(".save-slot").forEach(btn => {
+      btn.removeEventListener("click", window._tempSaveHandler);
+      const handler = (e) => {
+        const grade = btn.getAttribute("data-grade");
+        const section = btn.getAttribute("data-section");
+        const field = btn.getAttribute("data-field");
+        const inputId = btn.getAttribute("data-inputid");
+        const secondField = btn.getAttribute("data-second-field");
+        const secondId = btn.getAttribute("data-second-id");
+        const value = document.getElementById(inputId)?.value || "";
+        setValue(grade, section, field, value);
+        if(secondField && secondId) {
+          const secondVal = document.getElementById(secondId)?.value || "";
+          setValue(grade, section, secondField, secondVal);
+        }
+        // visual feedback
+        btn.innerHTML = '<i class="fas fa-check"></i> Saved!';
+        setTimeout(() => { btn.innerHTML = '<i class="fas fa-save"></i> Save'; }, 1200);
+      };
+      btn.addEventListener("click", handler);
+      window._tempSaveHandler = handler;
+    });
+  }
+
+  let currentGradeRendered = 12;
+
+  function renderCurrentGrade() {
+    const container = document.getElementById("dynamicPortfolioContent");
+    if(container) {
+      container.innerHTML = renderFullGrade(currentGradeRendered);
+      attachGlobalSaveListener();
     }
   }
 
   function init() {
-    loadReflections();
-    loadLinksFromLocal();
-    renderGradeView(12);
-    const btns = document.querySelectorAll(".year-btn");
-    btns.forEach(btn => {
+    loadStorage();
+    renderCurrentGrade();
+    const tabBtns = document.querySelectorAll(".year-btn");
+    tabBtns.forEach(btn => {
       btn.addEventListener("click", (e) => {
-        const gradeVal = parseInt(btn.getAttribute("data-grade"));
-        if(!isNaN(gradeVal)) {
-          currentGrade = gradeVal;
-          renderGradeView(currentGrade);
+        const grade = parseInt(btn.getAttribute("data-grade"));
+        if(!isNaN(grade)) {
+          currentGradeRendered = grade;
+          tabBtns.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          renderCurrentGrade();
         }
       });
     });
