@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>SciTech Portfolio | Sarveshwar Senthil Kumar | Central Link Hub</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <title>SciTech Portfolio | Sarveshwar Senthil Kumar | Multi-Link Evidence Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -14,9 +14,9 @@
     }
 
     body {
-      background: #f1f5f9;
+      background: #f0f4f9;
       font-family: 'Inter', sans-serif;
-      color: #0f2b3d;
+      color: #1a2c3e;
       line-height: 1.45;
       padding: 2rem 1.5rem;
     }
@@ -172,51 +172,95 @@
       margin-bottom: 0.8rem;
     }
 
-    /* link display card */
-    .link-display {
+    /* multi-link container */
+    .links-container {
       background: #f8fdfe;
       border-radius: 0.9rem;
-      padding: 0.8rem 1rem;
       border: 1px solid #cde3ec;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 10px;
+      padding: 0.8rem;
       margin-top: 6px;
     }
 
-    .link-url {
+    .links-list {
+      margin-bottom: 0.8rem;
+    }
+
+    .link-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: white;
+      padding: 0.5rem 0.8rem;
+      margin-bottom: 0.5rem;
+      border-radius: 0.7rem;
+      border: 1px solid #e2edf5;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .link-url-display {
+      flex: 1;
       font-size: 0.8rem;
-      color: #1f6392;
       word-break: break-all;
       font-family: monospace;
-      background: #ecf5f9;
-      padding: 0.3rem 0.7rem;
-      border-radius: 30px;
-      flex: 1;
+      color: #1f6392;
     }
 
-    .edit-link-btn {
+    .link-url-display a {
+      color: #1f6392;
+      text-decoration: none;
+    }
+
+    .link-url-display a:hover {
+      text-decoration: underline;
+    }
+
+    .link-actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    .icon-btn {
       background: #eef2f7;
       border: none;
-      padding: 0.4rem 1rem;
-      border-radius: 40px;
-      font-size: 0.75rem;
-      font-weight: 600;
+      padding: 0.3rem 0.7rem;
+      border-radius: 30px;
+      font-size: 0.7rem;
       cursor: pointer;
-      color: #1f6392;
       transition: 0.1s;
+      color: #2c4c6e;
     }
 
-    .edit-link-btn:hover {
+    .icon-btn:hover {
       background: #cbdde9;
     }
 
-    .evidence-icon {
+    .add-link-btn {
+      background: transparent;
+      border: 1px dashed #7fa1c1;
+      width: 100%;
+      text-align: center;
+      padding: 0.5rem;
+      border-radius: 0.7rem;
+      color: #2c7da0;
       font-size: 0.75rem;
-      color: #2e7d64;
-      margin-right: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.1s;
+      margin-top: 4px;
+    }
+
+    .add-link-btn:hover {
+      background: #e6f4ff;
+      border-color: #2c7da0;
+    }
+
+    .empty-links {
+      color: #8ba0b5;
+      font-size: 0.75rem;
+      text-align: center;
+      padding: 0.5rem;
+      font-style: italic;
     }
 
     .full-width-note {
@@ -254,11 +298,10 @@
 </head>
 <body>
 <div class="container">
-  <!-- header identity -->
   <div class="header-card">
     <div class="title-section">
-      <h1><i class="fas fa-link"></i> SciTech Portfolio Vault</h1>
-      <p>Evidence Hub • Redirect Any Requirement → Your Proof (Drive, PDF, Certificates, Photos)</p>
+      <h1><i class="fas fa-layer-group"></i> SciTech Multi-Link Portfolio</h1>
+      <p>Add unlimited evidence links per requirement • Google Drive • PDFs • Photos • Certificates</p>
     </div>
     <div class="student-info">
       <p><strong><i class="fas fa-user-graduate"></i> Sarveshwar Senthil Kumar</strong></p>
@@ -267,7 +310,6 @@
     </div>
   </div>
 
-  <!-- grade navigation -->
   <div class="year-tabs" id="yearTabs">
     <button class="year-btn" data-grade="9"><i class="fas fa-seedling"></i> Grade 9</button>
     <button class="year-btn" data-grade="10"><i class="fas fa-chart-line"></i> Grade 10</button>
@@ -275,36 +317,33 @@
     <button class="year-btn active" data-grade="12"><i class="fas fa-trophy"></i> Grade 12 (Final)</button>
   </div>
 
-  <!-- dynamic content -->
   <div id="dynamicPortfolioContent"></div>
 
-  <!-- hidden backend edit modal (simple prompt style, but we use custom inline editing) -->
   <div class="footer-note">
-    <i class="fas fa-edit"></i> Click any <strong>"Edit Link"</strong> button to paste your evidence URL (Google Drive, PDF, rubric photo, certificate, OneDrive). All links are saved automatically.
+    <i class="fas fa-plus-circle"></i> For each requirement, click <strong>"+ Add Link"</strong> to attach evidence. Edit or delete any link anytime. All data saves automatically.
   </div>
 </div>
 
 <script>
-  // ---------- STORAGE: all requirement links per grade and per item ----------
-  // Each requirement has a unique key: link_grade_section_itemIndex
-  let linkStorage = {};
+  // ---------- MULTI-LINK STORAGE ----------
+  // Structure: storage[linkKey] = array of { url, label? } (label optional)
+  let multiLinkStorage = {};
 
-  // Define the structure: grades 9-12 with all requirements from SciTech PDF.
-  // We create requirement objects: title + description + key (unique)
+  // Complete requirements structure with unique keys per requirement
   const requirementsStructure = {
     9: {
       personal: {
         title: "📁 Personal Information & Academic Achievement",
         items: [
-          { label: "Why I Took SciTech (statement / reflection)", description: "Brief paragraph about motivation to join SciTech program.", linkKey: "gr9_why_scitech" },
-          { label: "My Future Goals (post-secondary / career)", description: "Summary of career aspirations, university plans, or skilled trades.", linkKey: "gr9_future_goals" },
-          { label: "Evidence for Academic Achievement", description: "Report cards, certificates, honor roll, or awards.", linkKey: "gr9_academic_evidence" }
+          { label: "Why I Took SciTech (statement / reflection)", description: "Paragraph about motivation, goals, and initial interest in SciTech.", linkKey: "gr9_why_scitech" },
+          { label: "My Future Goals (post-secondary / career)", description: "Career aspirations, university plans, or skilled trades pathway.", linkKey: "gr9_future_goals" },
+          { label: "Evidence for Academic Achievement", description: "Report cards, certificates, honor roll, awards.", linkKey: "gr9_academic_evidence" }
         ]
       },
       skills: {
         title: "🧪 SciTech Skills, Knowledge & Certifications",
         items: [
-          { label: "Science Project #1 (student-designed experiment/investigation)", description: "Include lab report, slides, or photo evidence + reflection.", linkKey: "gr9_science_project" },
+          { label: "Science Project #1 (student-designed experiment/investigation)", description: "Lab report, slides, photo evidence + reflection.", linkKey: "gr9_science_project" },
           { label: "Technology Project #1 (completed project)", description: "CAD design, coding project, prototype documentation.", linkKey: "gr9_tech_project" },
           { label: "Safe Practices Evidence (tests/quizzes/certificates)", description: "WHMIS, safety quiz results, lab safety certification.", linkKey: "gr9_safe_practices" }
         ]
@@ -312,13 +351,13 @@
       community: {
         title: "🤝 Community Work & Extracurricular Involvement",
         items: [
-          { label: "Unique community / extracurricular item", description: "Volunteering, school club, council, or formal organization.", linkKey: "gr9_community_activity" }
+          { label: "Unique community / extracurricular item", description: "Volunteering, school club, council, formal organization.", linkKey: "gr9_community_activity" }
         ]
       },
       scitechExtra: {
         title: "⚙️ Extracurricular SciTech Experiences",
         items: [
-          { label: "Unique SciTech experience (Robotics, Coding Club, Science Fair, etc.)", description: "Evidence of participation in STEM-related club or competition.", linkKey: "gr9_scitech_extra" }
+          { label: "Unique SciTech experience (Robotics, Coding Club, Science Fair, etc.)", description: "Evidence of STEM club or competition participation.", linkKey: "gr9_scitech_extra" }
         ]
       },
       note: "Max one SciTech Activity Postcard per year if no other evidence. Field trips do not count."
@@ -329,14 +368,14 @@
         items: [
           { label: "Academic Achievement (report cards, certificates)", description: "Grade 10 report cards, literacy test, certifications.", linkKey: "gr10_academic" },
           { label: "Career Investigation Summary (MyBlueprint / Career Cruising)", description: "Completed career profile or skills passport summary.", linkKey: "gr10_career_investigation" },
-          { label: "Updated Resume & Cover Letter", description: "Professional resume + cover letter for a co-op or job.", linkKey: "gr10_resume_cover" }
+          { label: "Updated Resume & Cover Letter", description: "Professional resume + cover letter for co-op or job.", linkKey: "gr10_resume_cover" }
         ]
       },
       skills: {
         title: "🔬 SciTech Skills Growth",
         items: [
           { label: "Science Project + Reflection (growth from Gr9)", description: "Student-designed experiment with improved methodology.", linkKey: "gr10_science_project" },
-          { label: "Technology Project + Reflection", description: "More advanced tech project (Arduino, app, 3D modeling).", linkKey: "gr10_tech_project" },
+          { label: "Technology Project + Reflection", description: "Advanced tech project (Arduino, app, 3D modeling).", linkKey: "gr10_tech_project" },
           { label: "Safe Practices Evidence (updated)", description: "Advanced safety certifications or quiz scores.", linkKey: "gr10_safe_practices" }
         ]
       },
@@ -349,7 +388,7 @@
       scitechExtra: {
         title: "🚀 SciTech Extracurricular Growth",
         items: [
-          { label: "Unique SciTech experience with growth from Gr9", description: "Higher level of involvement (leadership, regional competition).", linkKey: "gr10_scitech_growth" }
+          { label: "Unique SciTech experience with growth from Gr9", description: "Higher involvement level (leadership, regional competition).", linkKey: "gr10_scitech_growth" }
         ]
       }
     },
@@ -364,7 +403,7 @@
       skills: {
         title: "🏆 STEM Contest & Projects",
         items: [
-          { label: "STEM related contest at PCSS (Caribou, Waterloo, Science Fair, HOSA)", description: "Proof of participation, scores, or certificates.", linkKey: "gr11_stem_contest" },
+          { label: "STEM related contest at PCSS (Caribou, Waterloo, Science Fair, HOSA)", description: "Proof of participation, scores, certificates.", linkKey: "gr11_stem_contest" },
           { label: "Science Project + Reflection (advanced investigation)", description: "Independent research, formal lab report or poster.", linkKey: "gr11_science_project" },
           { label: "Technology Project + Reflection", description: "Portfolio-ready tech artifact with documentation.", linkKey: "gr11_tech_project" }
         ]
@@ -378,7 +417,7 @@
       scitechExtra: {
         title: "🧠 SciTech Experiences (Advanced)",
         items: [
-          { label: "Unique SciTech experience growth from Gr10", description: "High-level competition, council exec, or specialized workshop.", linkKey: "gr11_scitech_advanced" }
+          { label: "Unique SciTech experience growth from Gr10", description: "High-level competition, council exec, specialized workshop.", linkKey: "gr11_scitech_advanced" }
         ]
       }
     },
@@ -416,55 +455,49 @@
 
   // Load from localStorage
   function loadLinks() {
-    const stored = localStorage.getItem("scitech_link_portfolio");
+    const stored = localStorage.getItem("scitech_multilink_v2");
     if(stored) {
       try {
-        linkStorage = JSON.parse(stored);
+        multiLinkStorage = JSON.parse(stored);
       } catch(e) {}
     }
-    if(!linkStorage) linkStorage = {};
+    if(!multiLinkStorage) multiLinkStorage = {};
   }
 
   function saveLinks() {
-    localStorage.setItem("scitech_link_portfolio", JSON.stringify(linkStorage));
+    localStorage.setItem("scitech_multilink_v2", JSON.stringify(multiLinkStorage));
   }
 
-  function getLinkValue(linkKey) {
-    return linkStorage[linkKey] || "";
+  function getLinks(linkKey) {
+    return multiLinkStorage[linkKey] || [];
   }
 
-  function setLinkValue(linkKey, url) {
-    linkStorage[linkKey] = url;
+  function addLink(linkKey, url, label = "") {
+    if(!url || url.trim() === "") return false;
+    let links = getLinks(linkKey);
+    links.push({ url: url.trim(), label: label.trim() || null, addedAt: Date.now() });
+    multiLinkStorage[linkKey] = links;
     saveLinks();
+    return true;
   }
 
-  // Helper: edit link (custom prompt-like but uses dialog)
-  function editLink(linkKey, displayElementId) {
-    let currentUrl = getLinkValue(linkKey);
-    let newUrl = prompt("🔗 Paste your evidence URL (Google Drive, PDF, photo, certificate, rubric):", currentUrl);
-    if(newUrl !== null) {
-      if(newUrl.trim() === "") {
-        setLinkValue(linkKey, "");
-      } else {
-        setLinkValue(linkKey, newUrl.trim());
-      }
-      // update display
-      const displaySpan = document.getElementById(displayElementId);
-      if(displaySpan) {
-        const updatedUrl = getLinkValue(linkKey);
-        if(updatedUrl && updatedUrl !== "") {
-          displaySpan.innerHTML = `<a href="${escapeHtml(updatedUrl)}" target="_blank" style="color:#1f6392; text-decoration:underline;"><i class="fas fa-external-link-alt"></i> ${truncateUrl(updatedUrl)}</a>`;
-          displaySpan.title = updatedUrl;
-        } else {
-          displaySpan.innerHTML = '<span style="color:#8ba0b5;">📭 No link set — click Edit to add evidence</span>';
-        }
-      }
+  function updateLink(linkKey, index, newUrl, newLabel) {
+    let links = getLinks(linkKey);
+    if(links[index]) {
+      if(newUrl !== undefined) links[index].url = newUrl.trim();
+      if(newLabel !== undefined) links[index].label = newLabel.trim() || null;
+      multiLinkStorage[linkKey] = links;
+      saveLinks();
     }
   }
 
-  function truncateUrl(url, maxLen=50) {
-    if(url.length <= maxLen) return url;
-    return url.substring(0, maxLen-3) + "...";
+  function deleteLink(linkKey, index) {
+    let links = getLinks(linkKey);
+    if(links[index]) {
+      links.splice(index, 1);
+      multiLinkStorage[linkKey] = links;
+      saveLinks();
+    }
   }
 
   function escapeHtml(str) {
@@ -477,84 +510,156 @@
     });
   }
 
-  // render a section completely with link displays
+  function truncateUrl(url, maxLen = 55) {
+    if(url.length <= maxLen) return url;
+    return url.substring(0, maxLen - 3) + "...";
+  }
+
+  // Render links for a specific requirement
+  function renderLinksForRequirement(linkKey, containerId) {
+    const links = getLinks(linkKey);
+    const container = document.getElementById(containerId);
+    if(!container) return;
+    
+    if(links.length === 0) {
+      container.innerHTML = `<div class="empty-links"><i class="fas fa-info-circle"></i> No evidence links yet. Click "Add Link" below.</div>`;
+      return;
+    }
+    
+    let html = `<div class="links-list">`;
+    links.forEach((link, idx) => {
+      const displayLabel = link.label ? `${escapeHtml(link.label)} – ` : '';
+      html += `
+        <div class="link-item" data-linkkey="${linkKey}" data-idx="${idx}">
+          <div class="link-url-display">
+            ${displayLabel}<a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> ${truncateUrl(escapeHtml(link.url))}</a>
+          </div>
+          <div class="link-actions">
+            <button class="icon-btn edit-link-btn" data-linkkey="${linkKey}" data-idx="${idx}" data-url="${escapeHtml(link.url)}" data-label="${escapeHtml(link.label || '')}"><i class="fas fa-edit"></i> Edit</button>
+            <button class="icon-btn delete-link-btn" data-linkkey="${linkKey}" data-idx="${idx}"><i class="fas fa-trash-alt"></i> Delete</button>
+          </div>
+        </div>
+      `;
+    });
+    html += `</div>`;
+    container.innerHTML = html;
+    
+    // attach edit/delete events
+    container.querySelectorAll('.edit-link-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const lk = btn.getAttribute('data-linkkey');
+        const idx = parseInt(btn.getAttribute('data-idx'));
+        const currentUrl = btn.getAttribute('data-url');
+        const currentLabel = btn.getAttribute('data-label') || '';
+        const newUrl = prompt("Edit evidence URL (Google Drive, PDF, image, certificate):", currentUrl);
+        if(newUrl !== null && newUrl.trim() !== "") {
+          const newLabel = prompt("Optional label/title for this link (e.g., 'Lab Report PDF'):", currentLabel);
+          updateLink(lk, idx, newUrl, newLabel);
+          refreshCurrentGrade(); // refresh view
+        }
+      });
+    });
+    
+    container.querySelectorAll('.delete-link-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const lk = btn.getAttribute('data-linkkey');
+        const idx = parseInt(btn.getAttribute('data-idx'));
+        if(confirm("Remove this evidence link?")) {
+          deleteLink(lk, idx);
+          refreshCurrentGrade();
+        }
+      });
+    });
+  }
+  
+  // Function to add new link (prompt)
+  function promptAddLink(linkKey) {
+    let url = prompt("🔗 Paste evidence URL (Google Drive, PDF, photo, certificate, rubric):", "https://");
+    if(url && url.trim() !== "") {
+      let label = prompt("Optional label (e.g., 'Semester 1 Report Card', 'Project Photo'):", "");
+      addLink(linkKey, url, label || "");
+      refreshCurrentGrade();
+    }
+  }
+  
+  // Render a full section with all requirements and add-link buttons
   function renderSection(grade, sectionKey, sectionData) {
     let html = `<div class="section-card"><div class="section-header"><h2><i class="fas ${sectionKey === 'personal' ? 'fa-user-circle' : (sectionKey === 'skills' ? 'fa-microscope' : (sectionKey === 'community' ? 'fa-hand-holding-heart' : 'fa-microchip'))}"></i> ${sectionData.title}</h2></div><div class="requirement-list">`;
+    
     for(let i=0; i<sectionData.items.length; i++) {
       const item = sectionData.items[i];
       const linkKey = item.linkKey;
-      const currentUrl = getLinkValue(linkKey);
-      const uniqueId = `link_display_${linkKey}`;
+      const uniqueContainerId = `links_${linkKey}`;
+      
       html += `
         <div class="req-item">
           <div class="req-title">
             <span>📌 ${escapeHtml(item.label)}</span>
-            <span class="req-badge">evidence required</span>
+            <span class="req-badge">multiple links allowed</span>
           </div>
           <div class="req-desc">${escapeHtml(item.description)}</div>
-          <div class="link-display">
-            <span class="evidence-icon"><i class="fas fa-paperclip"></i> Evidence URL:</span>
-            <span id="${uniqueId}" class="link-url">${currentUrl ? `<a href="${escapeHtml(currentUrl)}" target="_blank" style="color:#1f6392; text-decoration:underline;"><i class="fas fa-external-link-alt"></i> ${truncateUrl(escapeHtml(currentUrl))}</a>` : '<span style="color:#8ba0b5;">📭 No link set — click Edit to add evidence</span>'}</span>
-            <button class="edit-link-btn" data-linkkey="${linkKey}" data-displayid="${uniqueId}"><i class="fas fa-pen"></i> Edit Link</button>
+          <div class="links-container">
+            <div id="${uniqueContainerId}" class="links-render-area"></div>
+            <button class="add-link-btn" data-linkkey="${linkKey}"><i class="fas fa-plus-circle"></i> + Add Evidence Link (URL)</button>
           </div>
         </div>
       `;
     }
     html += `</div></div>`;
-    return html;
+    return { html, linkKeys: sectionData.items.map(it => it.linkKey) };
   }
-
+  
+  let currentGrade = 12;
+  
+  function refreshCurrentGrade() {
+    renderGradeView(currentGrade);
+  }
+  
   function renderGradeView(gradeNum) {
     const structure = requirementsStructure[gradeNum];
-    if(!structure) return `<div class="full-width-note">Requirements not available for this grade.</div>`;
+    if(!structure) {
+      document.getElementById("dynamicPortfolioContent").innerHTML = `<div class="full-width-note">Requirements not available.</div>`;
+      return;
+    }
     
-    let leftSections = [];
-    let rightSections = [];
-    // Layout: personal + skills on left; community + scitechExtra on right
-    leftSections.push(renderSection(gradeNum, "personal", structure.personal));
-    leftSections.push(renderSection(gradeNum, "skills", structure.skills));
-    rightSections.push(renderSection(gradeNum, "community", structure.community));
-    rightSections.push(renderSection(gradeNum, "scitechExtra", structure.scitechExtra));
+    const leftPersonal = renderSection(gradeNum, "personal", structure.personal);
+    const leftSkills = renderSection(gradeNum, "skills", structure.skills);
+    const rightCommunity = renderSection(gradeNum, "community", structure.community);
+    const rightScitech = renderSection(gradeNum, "scitechExtra", structure.scitechExtra);
+    
+    let leftHtml = leftPersonal.html + leftSkills.html;
+    let rightHtml = rightCommunity.html + rightScitech.html;
     
     let extraNoteHtml = structure.note ? `<div class="full-width-note"><i class="fas fa-info-circle"></i> ${structure.note}</div>` : "";
     let gradReqHtml = structure.gradRequirement ? `<div class="full-width-note" style="background:#e6f4ea;border-left-color:#2e7d64;"><i class="fas fa-certificate"></i> ${structure.gradRequirement}</div>` : "";
     
-    return `
+    const container = document.getElementById("dynamicPortfolioContent");
+    container.innerHTML = `
       <div class="requirements-grid">
-        <div>${leftSections.join('')}</div>
-        <div>${rightSections.join('')}</div>
+        <div>${leftHtml}</div>
+        <div>${rightHtml}</div>
       </div>
       ${extraNoteHtml}
       ${gradReqHtml}
     `;
-  }
-
-  let currentGrade = 12;
-
-  function renderCurrentGrade() {
-    const container = document.getElementById("dynamicPortfolioContent");
-    if(container) {
-      container.innerHTML = renderGradeView(currentGrade);
-      attachEditButtonEvents();
-    }
-  }
-
-  function attachEditButtonEvents() {
-    const editButtons = document.querySelectorAll(".edit-link-btn");
-    editButtons.forEach(btn => {
-      // remove previous listener if any to avoid dup
+    
+    // render each requirement's links
+    const allLinkKeys = [...leftPersonal.linkKeys, ...leftSkills.linkKeys, ...rightCommunity.linkKeys, ...rightScitech.linkKeys];
+    allLinkKeys.forEach(linkKey => {
+      const containerId = `links_${linkKey}`;
+      renderLinksForRequirement(linkKey, containerId);
+    });
+    
+    // attach add-link event listeners
+    document.querySelectorAll('.add-link-btn').forEach(btn => {
+      const lk = btn.getAttribute('data-linkkey');
+      // remove old listener
       const newBtn = btn.cloneNode(true);
       btn.parentNode.replaceChild(newBtn, btn);
-      newBtn.addEventListener("click", (e) => {
-        const linkKey = newBtn.getAttribute("data-linkkey");
-        const displayId = newBtn.getAttribute("data-displayid");
-        if(linkKey && displayId) {
-          editLink(linkKey, displayId);
-        }
-      });
+      newBtn.addEventListener('click', () => promptAddLink(lk));
     });
   }
-
+  
   function initYearTabs() {
     const tabs = document.querySelectorAll(".year-btn");
     tabs.forEach(tab => {
@@ -564,15 +669,15 @@
           currentGrade = grade;
           tabs.forEach(btn => btn.classList.remove("active"));
           tab.classList.add("active");
-          renderCurrentGrade();
+          renderGradeView(currentGrade);
         }
       });
     });
   }
-
-  // initialization
+  
+  // Initialize
   loadLinks();
-  renderCurrentGrade();
+  renderGradeView(12);
   initYearTabs();
 </script>
 </body>
