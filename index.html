@@ -13,12 +13,70 @@
       box-sizing: border-box;
     }
 
+    /* DARK MODE VARIABLES */
+    :root {
+      --bg-primary: #f0f4f9;
+      --bg-secondary: #ffffff;
+      --bg-card: #ffffff;
+      --bg-header: #ffffff;
+      --text-primary: #1a2c3e;
+      --text-secondary: #4a6f8f;
+      --text-muted: #5a7c9c;
+      --border-light: #e2edf2;
+      --border-medium: #cbdde9;
+      --card-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      --section-header-bg: #fafeff;
+      --link-bg: #f8fdfe;
+      --link-border: #cde3ec;
+      --link-item-bg: #ffffff;
+      --empty-links: #8ba0b5;
+      --note-bg: #fef7e0;
+      --note-border: #f4b942;
+      --grad-req-bg: #e6f4ea;
+      --grad-req-border: #2e7d64;
+      --social-bar-bg: linear-gradient(135deg, #1a3c5c, #0f2b3d);
+      --social-link-bg: rgba(255,255,255,0.12);
+      --social-link-hover: #2c7da0;
+      --edit-hint-bg: #e8f0fe;
+      --edit-hint-text: #004070;
+      --footer-bg: #f9fbfd;
+    }
+
+    body.dark {
+      --bg-primary: #0a0e1a;
+      --bg-secondary: #111827;
+      --bg-card: #111827;
+      --bg-header: #0f172a;
+      --text-primary: #e2e8f0;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --border-light: #1e293b;
+      --border-medium: #334155;
+      --card-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      --section-header-bg: #0f172a;
+      --link-bg: #1e293b;
+      --link-border: #334155;
+      --link-item-bg: #0f172a;
+      --empty-links: #64748b;
+      --note-bg: #2d2a1a;
+      --note-border: #b8860b;
+      --grad-req-bg: #1a2e2a;
+      --grad-req-border: #2e7d64;
+      --social-bar-bg: linear-gradient(135deg, #0f172a, #020617);
+      --social-link-bg: rgba(255,255,255,0.08);
+      --social-link-hover: #2c7da0;
+      --edit-hint-bg: #1e293b;
+      --edit-hint-text: #7ab7d4;
+      --footer-bg: #0f172a;
+    }
+
     body {
-      background: #f0f4f9;
+      background: var(--bg-primary);
       font-family: 'Inter', sans-serif;
-      color: #1a2c3e;
+      color: var(--text-primary);
       line-height: 1.45;
       padding: 2rem 1.5rem;
+      transition: background 0.3s ease, color 0.3s ease;
     }
 
     .container {
@@ -28,47 +86,71 @@
 
     /* header */
     .header-card {
-      background: white;
+      background: var(--bg-header);
       border-radius: 1.5rem;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      box-shadow: var(--card-shadow);
       padding: 1.5rem 2rem;
       margin-bottom: 2rem;
-      border: 1px solid #e2edf2;
+      border: 1px solid var(--border-light);
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
       gap: 1.5rem;
+      transition: background 0.3s ease, border 0.3s ease;
     }
 
     .title-section h1 {
       font-size: 1.9rem;
       font-weight: 800;
-      color: #0b4b6e;
+      color: var(--text-primary);
       letter-spacing: -0.3px;
     }
 
     .title-section p {
-      color: #4a6f8f;
+      color: var(--text-secondary);
       margin-top: 0.3rem;
     }
 
     .student-info {
-      background: #f8fafc;
+      background: var(--bg-secondary);
       padding: 0.8rem 1.5rem;
       border-radius: 1.2rem;
       border-left: 4px solid #2c7da0;
       text-align: right;
+      transition: background 0.3s ease;
     }
 
     .student-info p {
       margin: 0.2rem 0;
       font-size: 0.9rem;
+      color: var(--text-primary);
+    }
+
+    /* dark mode toggle button */
+    .dark-mode-toggle {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-medium);
+      border-radius: 2rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .dark-mode-toggle:hover {
+      background: var(--social-link-hover);
+      color: white;
     }
 
     /* social links bar */
     .social-links-bar {
-      background: linear-gradient(135deg, #1a3c5c, #0f2b3d);
+      background: var(--social-bar-bg);
       border-radius: 1.2rem;
       padding: 0.8rem 1.5rem;
       margin-bottom: 1.5rem;
@@ -77,6 +159,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
+      transition: background 0.3s ease;
     }
 
     .social-title {
@@ -99,7 +182,7 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(255,255,255,0.12);
+      background: var(--social-link-bg);
       padding: 0.4rem 1rem;
       border-radius: 2rem;
       text-decoration: none;
@@ -115,7 +198,7 @@
     }
 
     .social-link:hover {
-      background: #2c7da0;
+      background: var(--social-link-hover);
       color: white;
       transform: translateY(-2px);
     }
@@ -133,8 +216,9 @@
       gap: 0.8rem;
       margin-bottom: 2rem;
       flex-wrap: wrap;
-      border-bottom: 1px solid #cbdde9;
+      border-bottom: 1px solid var(--border-medium);
       padding-bottom: 0.75rem;
+      transition: border 0.3s ease;
     }
 
     .year-btn {
@@ -146,7 +230,7 @@
       border-radius: 2rem;
       cursor: pointer;
       transition: 0.2s;
-      color: #2c4c6e;
+      color: var(--text-secondary);
       font-family: 'Inter', sans-serif;
     }
 
@@ -161,7 +245,8 @@
     }
 
     .year-btn:hover:not(.active) {
-      background: #e2e8f0;
+      background: var(--border-light);
+      color: var(--text-primary);
     }
 
     /* main grid */
@@ -173,24 +258,25 @@
     }
 
     .section-card {
-      background: white;
+      background: var(--bg-card);
       border-radius: 1.3rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-      border: 1px solid #e0edf5;
+      box-shadow: var(--card-shadow);
+      border: 1px solid var(--border-light);
       overflow: hidden;
-      transition: 0.1s;
+      transition: background 0.3s ease, border 0.3s ease;
     }
 
     .section-header {
-      background: #fafeff;
+      background: var(--section-header-bg);
       padding: 1rem 1.5rem;
-      border-bottom: 2px solid #dcebf3;
+      border-bottom: 2px solid var(--border-light);
+      transition: background 0.3s ease;
     }
 
     .section-header h2 {
       font-size: 1.35rem;
       font-weight: 700;
-      color: #155f7c;
+      color: var(--text-primary);
       display: flex;
       align-items: center;
       gap: 10px;
@@ -202,7 +288,8 @@
 
     .req-item {
       padding: 1.2rem 1.5rem;
-      border-bottom: 1px solid #ecf3f8;
+      border-bottom: 1px solid var(--border-light);
+      transition: border 0.3s ease;
     }
 
     .req-item:last-child {
@@ -211,7 +298,7 @@
 
     .req-title {
       font-weight: 700;
-      color: #1e4a6e;
+      color: var(--text-primary);
       margin-bottom: 0.6rem;
       display: flex;
       align-items: center;
@@ -228,19 +315,25 @@
       font-weight: 500;
     }
 
+    body.dark .req-badge {
+      background: #1e3a5f;
+      color: #7ab7d4;
+    }
+
     .req-desc {
       font-size: 0.85rem;
-      color: #5a7c9c;
+      color: var(--text-muted);
       margin-bottom: 0.8rem;
     }
 
     /* multi-link container */
     .links-container {
-      background: #f8fdfe;
+      background: var(--link-bg);
       border-radius: 0.9rem;
-      border: 1px solid #cde3ec;
+      border: 1px solid var(--link-border);
       padding: 0.8rem;
       margin-top: 6px;
+      transition: background 0.3s ease, border 0.3s ease;
     }
 
     .links-list {
@@ -251,13 +344,14 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: white;
+      background: var(--link-item-bg);
       padding: 0.5rem 0.8rem;
       margin-bottom: 0.5rem;
       border-radius: 0.7rem;
-      border: 1px solid #e2edf5;
+      border: 1px solid var(--border-light);
       gap: 8px;
       flex-wrap: wrap;
+      transition: background 0.3s ease;
     }
 
     .link-url-display {
@@ -277,8 +371,12 @@
       text-decoration: underline;
     }
 
+    body.dark .link-url-display a {
+      color: #5bb4d4;
+    }
+
     .empty-links {
-      color: #8ba0b5;
+      color: var(--empty-links);
       font-size: 0.75rem;
       text-align: center;
       padding: 0.5rem;
@@ -286,34 +384,45 @@
     }
 
     .full-width-note {
-      background: #fef7e0;
-      border-left: 4px solid #f4b942;
+      background: var(--note-bg);
+      border-left: 4px solid var(--note-border);
       padding: 1rem 1.5rem;
       border-radius: 1rem;
       font-size: 0.85rem;
       margin-top: 1rem;
+      transition: background 0.3s ease;
     }
 
     .footer-note {
       text-align: center;
       margin-top: 2.5rem;
       font-size: 0.75rem;
-      color: #5b7e9e;
-      border-top: 1px solid #cbdde9;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-medium);
       padding-top: 1.5rem;
-      background: #f9fbfd;
+      background: var(--footer-bg);
       border-radius: 1rem;
       padding-bottom: 1rem;
+      transition: background 0.3s ease, border 0.3s ease;
     }
 
     .edit-hint {
-      background: #e8f0fe;
+      background: var(--edit-hint-bg);
       border-radius: 0.6rem;
       padding: 0.5rem 1rem;
       font-size: 0.7rem;
       font-family: monospace;
       margin-top: 0.5rem;
-      color: #004070;
+      color: var(--edit-hint-text);
+      transition: background 0.3s ease;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
 
     @media (max-width: 800px) {
@@ -336,15 +445,23 @@
         justify-content: center;
         width: 100%;
       }
+      .header-top {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 <body>
 <div class="container">
   <div class="header-card">
-    <div class="title-section">
-      <h1><i class="fas fa-link"></i> SciTech Permanent Portfolio</h1>
-      <p>Hardcoded evidence links • Works on any device</p>
+    <div class="header-top" style="width:100%; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+      <div class="title-section">
+        <h1><i class="fas fa-link"></i> SciTech Permanent Portfolio</h1>
+        <p>Hardcoded evidence links • Works on any device</p>
+      </div>
+      <button class="dark-mode-toggle" id="darkModeToggle">
+        <i class="fas fa-moon"></i> Dark Mode
+      </button>
     </div>
     <div class="student-info">
       <p><strong><i class="fas fa-user-graduate"></i> Sarveshwar Senthil Kumar</strong></p>
@@ -371,7 +488,8 @@
   <div id="dynamicPortfolioContent"></div>
 
   <div class="footer-note">
-    <i class="fas fa-edit"></i> To update social links, scroll down in the HTML to the <strong>SOCIAL_LINKS</strong> section and replace the URLs.
+    <i class="fas fa-edit"></i> To update social links, scroll down in the HTML to the <strong>SOCIAL_LINKS</strong> section and replace the URLs. <br>
+    <i class="fas fa-moon"></i> Use the Dark Mode toggle in the header for comfortable viewing at night.
   </div>
 </div>
 
@@ -756,7 +874,7 @@
     let rightHtml = rightCommunity.html + rightScitech.html;
 
     let extraNoteHtml = structure.note ? `<div class="full-width-note"><i class="fas fa-info-circle"></i> ${structure.note}</div>` : "";
-    let gradReqHtml = structure.gradRequirement ? `<div class="full-width-note" style="background:#e6f4ea;border-left-color:#2e7d64;"><i class="fas fa-certificate"></i> ${structure.gradRequirement}</div>` : "";
+    let gradReqHtml = structure.gradRequirement ? `<div class="full-width-note" style="background:var(--grad-req-bg);border-left-color:var(--grad-req-border);"><i class="fas fa-certificate"></i> ${structure.gradRequirement}</div>` : "";
 
     const container = document.getElementById("dynamicPortfolioContent");
     container.innerHTML = `
@@ -790,10 +908,30 @@
     });
   }
 
+  // Dark Mode Toggle
+  function initDarkMode() {
+    const toggleBtn = document.getElementById("darkModeToggle");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const savedTheme = localStorage.getItem("darkMode");
+    
+    if (savedTheme === "enabled" || (savedTheme === null && prefersDark)) {
+      document.body.classList.add("dark");
+      toggleBtn.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+    }
+    
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      const isDark = document.body.classList.contains("dark");
+      localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+      toggleBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i> Light Mode' : '<i class="fas fa-moon"></i> Dark Mode';
+    });
+  }
+
   // Initialize
   renderSocialLinks();
   renderGradeView(12);
   initYearTabs();
+  initDarkMode();
 </script>
 </body>
 </html>
