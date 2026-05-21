@@ -40,6 +40,9 @@
       --edit-hint-bg: #e8f0fe;
       --edit-hint-text: #004070;
       --footer-bg: #f9fbfd;
+      --volunteer-card-bg: #eef7fa;
+      --volunteer-border: #2c7da0;
+      --qr-bg: white;
     }
 
     body.dark {
@@ -68,6 +71,9 @@
       --edit-hint-bg: #1e293b;
       --edit-hint-text: #7ab7d4;
       --footer-bg: #0f172a;
+      --volunteer-card-bg: #0f1e24;
+      --volunteer-border: #2c7da0;
+      --qr-bg: #1e293b;
     }
 
     body {
@@ -383,6 +389,93 @@
       font-style: italic;
     }
 
+    /* Volunteer & QR Section */
+    .volunteer-qr-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin: 2rem 0 1.5rem;
+    }
+    .volunteer-card, .qr-card {
+      flex: 1;
+      min-width: 250px;
+      background: var(--bg-card);
+      border-radius: 1.3rem;
+      border: 1px solid var(--border-light);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: var(--card-shadow);
+    }
+    .volunteer-header, .qr-header {
+      background: var(--volunteer-card-bg);
+      padding: 1rem 1.5rem;
+      border-bottom: 2px solid var(--volunteer-border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--text-primary);
+    }
+    .volunteer-body, .qr-body {
+      padding: 1.5rem;
+    }
+    .volunteer-form-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--link-bg);
+      padding: 0.9rem 1.2rem;
+      border-radius: 1rem;
+      text-decoration: none;
+      font-weight: 600;
+      width: 100%;
+      justify-content: center;
+      border: 1px solid var(--volunteer-border);
+      transition: 0.2s;
+      color: var(--text-primary);
+    }
+    .volunteer-form-link i {
+      font-size: 1.3rem;
+      color: #2c7da0;
+    }
+    .volunteer-form-link:hover {
+      background: var(--volunteer-border);
+      color: white;
+      transform: translateY(-2px);
+    }
+    .qr-placeholder {
+      text-align: center;
+    }
+    .qr-code-img {
+      max-width: 180px;
+      width: 100%;
+      height: auto;
+      background: var(--qr-bg);
+      padding: 12px;
+      border-radius: 1.2rem;
+      margin: 0 auto 1rem;
+      display: block;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .qr-caption {
+      font-size: 0.8rem;
+      text-align: center;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      word-break: break-all;
+    }
+    .edit-hint-vol {
+      font-size: 0.7rem;
+      font-family: monospace;
+      margin-top: 1rem;
+      padding: 0.5rem;
+      background: var(--edit-hint-bg);
+      border-radius: 0.6rem;
+      color: var(--edit-hint-text);
+      text-align: center;
+    }
+
     .full-width-note {
       background: var(--note-bg);
       border-left: 4px solid var(--note-border);
@@ -448,6 +541,9 @@
       .header-top {
         flex-direction: column;
       }
+      .volunteer-qr-row {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
@@ -478,6 +574,39 @@
     </div>
   </div>
 
+  <!-- NEW VOLUNTEER FORM + QR CODE SECTION (custom slot) -->
+  <div class="volunteer-qr-row">
+    <!-- Volunteer Form Slot -->
+    <div class="volunteer-card">
+      <div class="volunteer-header">
+        <i class="fas fa-hands-helping"></i> Volunteer Sign-up Form
+      </div>
+      <div class="volunteer-body">
+        <a href="#" id="volunteerFormLink" class="volunteer-form-link" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-clipboard-list"></i> Click to access Volunteer Form
+        </a>
+        <div class="edit-hint-vol">
+          <i class="fas fa-pen-alt"></i> To update your volunteer form link, edit <strong>VOLUNTEER_FORM_URL</strong> in the JavaScript section.
+        </div>
+      </div>
+    </div>
+    <!-- QR Code Slot: redirects to https://sarveshwarsenthilkumar.github.io/SciTechPortfolio/ -->
+    <div class="qr-card">
+      <div class="qr-header">
+        <i class="fas fa-qrcode"></i> Portfolio QR Code
+      </div>
+      <div class="qr-body qr-placeholder">
+        <div id="qrCodeContainer"></div>
+        <div class="qr-caption">
+          <i class="fas fa-mobile-alt"></i> Scan to open my SciTech Portfolio website
+        </div>
+        <div class="edit-hint-vol" style="margin-top: 0.8rem;">
+          <i class="fas fa-info-circle"></i> QR points to: <strong id="qrTargetUrl">https://sarveshwarsenthilkumar.github.io/SciTechPortfolio/</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="year-tabs" id="yearTabs">
     <button class="year-btn" data-grade="9"><i class="fas fa-seedling"></i> Grade 9</button>
     <button class="year-btn" data-grade="10"><i class="fas fa-chart-line"></i> Grade 10</button>
@@ -489,11 +618,18 @@
 
   <div class="footer-note">
     <i class="fas fa-edit"></i> To update social links, scroll down in the HTML to the <strong>SOCIAL_LINKS</strong> section and replace the URLs. <br>
-    <i class="fas fa-moon"></i> Use the Dark Mode toggle in the header for comfortable viewing at night.
+    <i class="fas fa-moon"></i> Use the Dark Mode toggle in the header for comfortable viewing at night. <br>
+    <i class="fas fa-hand-sparkles"></i> Volunteer form link + QR code to portfolio website embedded.
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 <script>
+  // =========================================================================
+  // ========== VOLUNTEER FORM URL - EDIT YOUR VOLUNTEER LINK HERE ===========
+  // =========================================================================
+  const VOLUNTEER_FORM_URL = "https://forms.gle/your-volunteer-form-link";  // <--- REPLACE WITH YOUR ACTUAL VOLUNTEER FORM URL
+
   // =========================================================================
   // ========== SOCIAL & PORTFOLIO LINKS (EDIT YOUR URLs HERE) ===============
   // =========================================================================
@@ -542,7 +678,6 @@
       { url: "https://docs.google.com/document/d/1zTICEVrv4b0ox-EtnXt5i3fh1Wllp8s3YAD-MnxtTR4/edit?usp=sharing", label: "Coding Club Participation Reflection" },
       { url: "https://drive.google.com/file/d/1CRRLTVq-6uDSRtP84XpJ_zn5r_fWsPnU/view?usp=sharing", label: "Email to Mr. Knowles" }
     ],
-
     // ========== GRADE 10 ==========
     "gr10_academic": [
       { url: "https://drive.google.com/file/d/1zkRNLH2OiSUmTg2H1S5xiz6b1kH-yc-7/view?usp=sharing", label: "Grade 10 Final Report Card" }
@@ -578,7 +713,6 @@
       { url: "https://drive.google.com/file/d/1CRRLTVq-6uDSRtP84XpJ_zn5r_fWsPnU/view?usp=sharing", label: "Email to Mr. Knowles" },
       { url: "https://dmoj.ca/organization/207-port-credit-secondary-school-coding-club/users", label: "DMOJ Coding Club Organization Page" }
     ],
-
     // ========== GRADE 11 ==========
     "gr11_post_secondary": [
       { url: "https://sarveshwarsenthilkumar.github.io/", label: "Personal Website" },
@@ -613,7 +747,6 @@
       { url: "https://docs.google.com/spreadsheets/d/1Hoc2hJe-jCp1QGrRM9cptbalIZ1dlXuiMOYtF2dhIHk/edit?usp=sharing", label: "Science Fair Data" },
       { url: "https://docs.google.com/presentation/d/1TvQWrr-tAgVkDCXz6-cqicwNs_rMEfqYBfBLRKnkIGM/edit?usp=sharing", label: "Science Fair Slideshow" }
     ],
-
     // ========== GRADE 12 (CULMINATING) ==========
     "gr12_resume_final": [
       { url: "https://drive.google.com/file/d/1SLu82bRXa9TtQ5lVfOa6mizKsqXRpHpw/view?usp=sharing", label: "Final Updated Resume" },
@@ -650,288 +783,70 @@
   // =========================================================================
   // ========== REQUIREMENTS STRUCTURE (ALIGNED WITH LINKS ABOVE) ============
   // =========================================================================
-  const requirementsStructure = {
-    9: {
-      personal: {
-        title: "📁 Personal Information & Academic Achievement",
-        items: [
-          { label: "Why I Took SciTech (Written Reflection)", description: "Personal statement explaining motivation for joining SciTech program.", linkKey: "gr9_why_scitech" },
-          { label: "My Future Goals (Career & Post-Secondary)", description: "Career aspirations, university plans, and pathways.", linkKey: "gr9_future_goals" },
-          { label: "Academic Achievement (Report Cards)", description: "Grade 9 report cards, certificates, honors.", linkKey: "gr9_academic_evidence" }
-        ]
-      },
-      skills: {
-        title: "🧪 SciTech Skills, Knowledge & Certifications",
-        items: [
-          { label: "Science Project: Climate Change & Sustainability", description: "Student-designed experiment/investigation with reflection.", linkKey: "gr9_science_project" },
-          { label: "Technology Projects (Water Wheel, Compressed Air Car, CN Tower)", description: "Completed tech projects including CAD, prototypes, and documentation.", linkKey: "gr9_tech_project" },
-          { label: "Safe Practices Evidence (Lab Safety & WHMIS)", description: "Safety contracts, quizzes, and bandsaw certification.", linkKey: "gr9_safe_practices" }
-        ]
-      },
-      community: {
-        title: "🤝 Community Work & Extracurricular Involvement",
-        items: [
-          { label: "Community Activity: ReSourced Volunteering", description: "Reflection on community work and involvement.", linkKey: "gr9_community_activity" }
-        ]
-      },
-      scitechExtra: {
-        title: "⚙️ Extracurricular SciTech Experiences",
-        items: [
-          { label: "Coding Club Participation", description: "Evidence of coding club involvement and STEM enrichment.", linkKey: "gr9_scitech_extra" }
-        ]
-      },
-      note: "Max one SciTech Activity Postcard per year if no other evidence. Field trips do not count."
-    },
-    10: {
-      personal: {
-        title: "📄 Career Prep & Personal Info",
-        items: [
-          { label: "Academic Achievement (Grade 10 Report Card)", description: "Final report card and academic records.", linkKey: "gr10_academic" },
-          { label: "Career Investigation (MyBlueprint)", description: "Career interest profiles and pathway exploration.", linkKey: "gr10_career_investigation" },
-          { label: "Resume & Cover Letter (Grade 10)", description: "Professional resume and cover letter.", linkKey: "gr10_resume_cover" }
-        ]
-      },
-      skills: {
-        title: "🔬 SciTech Skills Growth",
-        items: [
-          { label: "Science Project: Cellular Technologies", description: "Research notes and presentation on cellular technologies.", linkKey: "gr10_science_project" },
-          { label: "Technology Project: Tic-Tac-Toe & Manufacturing", description: "Hands-on tech project with reflection.", linkKey: "gr10_tech_project" },
-          { label: "Safe Practices (Manufacturing & WHMIS)", description: "Safety contracts, WHMIS quiz, safety symbols.", linkKey: "gr10_safe_practices" }
-        ]
-      },
-      community: {
-        title: "🌟 Community Involvement (Growth evident)",
-        items: [
-          { label: "Community Growth: Zugzwang & Volunteering", description: "Reflection on community work and chess club involvement.", linkKey: "gr10_community_growth" }
-        ]
-      },
-      scitechExtra: {
-        title: "🚀 SciTech Extracurricular Growth",
-        items: [
-          { label: "SciTech Extracurricular: Coding Club & DMOJ", description: "Coding club participation and online judge activity.", linkKey: "gr10_scitech_growth" }
-        ]
-      }
-    },
-    11: {
-      personal: {
-        title: "🎓 Post-Secondary & Career Plans",
-        items: [
-          { label: "Post-Secondary Plans (Personal Website & LinkedIn)", description: "Digital presence showcasing career direction.", linkKey: "gr11_post_secondary" },
-          { label: "Academic Achievement (Grade 11 Report Card)", description: "Final grade 11 report card.", linkKey: "gr11_academic" }
-        ]
-      },
-      skills: {
-        title: "🏆 STEM Contest & Projects",
-        items: [
-          { label: "STEM Contest: Canadian Senior Math Contest", description: "Certificate of participation/achievement.", linkKey: "gr11_stem_contest" },
-          { label: "Science Project: Sustainable Energy (Physics)", description: "Presentation, research, reflection, and project website.", linkKey: "gr11_science_project" },
-          { label: "Technology Project: ICS Portfolio & Tech Demo", description: "Tech project planning, reflection, demo video, and portfolio.", linkKey: "gr11_tech_project" }
-        ]
-      },
-      community: {
-        title: "🌱 Community Work (Gr11 Growth from Gr10)",
-        items: [
-          { label: "Community Leadership: Zugzwang Chess Club", description: "Website and reflection on running the chess club.", linkKey: "gr11_community_leadership" }
-        ]
-      },
-      scitechExtra: {
-        title: "🧠 SciTech Experiences (Advanced)",
-        items: [
-          { label: "Advanced SciTech: Science Fair & Auto-Throttle", description: "PC cooling research, data, slideshow, and engineering project.", linkKey: "gr11_scitech_advanced" }
-        ]
-      }
-    },
-    12: {
-      personal: {
-        title: "🏅 Final Career & Employability",
-        items: [
-          { label: "Final Resume & Cover Letter (Employability Skills)", description: "Updated resume, cover letter, and PDF version.", linkKey: "gr12_resume_final" },
-          { label: "Academic Achievement (University Offers)", description: "All university offers received.", linkKey: "gr12_academic_final" }
-        ]
-      },
-      skills: {
-        title: "⚡ STEM Contest & Capstone Projects",
-        items: [
-          { label: "STEM Contests: CCC Senior & CSMC", description: "Canadian Computing Contest and Canadian Senior Math Contest certificates.", linkKey: "gr12_contest_final" },
-          { label: "Science Capstone: Physics Catapult Project", description: "Final physics investigation report.", linkKey: "gr12_science_capstone" },
-          { label: "Technology Capstone: Pinball GUI Project", description: "GitHub repo, documentation, and technical reflection.", linkKey: "gr12_tech_capstone" }
-        ]
-      },
-      community: {
-        title: "🤲 Community Work (Grade 12 Leadership)",
-        items: [
-          { label: "Community Leadership & Networking", description: "Reflection on community work and LinkedIn profile.", linkKey: "gr12_community_exec" }
-        ]
-      },
-      scitechExtra: {
-        title: "🏁 SciTech Extracurricular Culmination",
-        items: [
-          { label: "SciTech Culmination: Engineering Idol (SCOPE)", description: "LinkedIn reflection, GitHub repo, documentation website, and presentation.", linkKey: "gr12_scitech_culmination" }
-        ]
-      },
-      gradRequirement: "✅ FINAL REQUIREMENT: Portfolio presentation to staff (SciTech Certificate). Rubric: Meets/Exceeds Expectations required."
-    }
-  };
+  const requirementsStructure = { 9:{ personal:{ title:"📁 Personal Information & Academic Achievement", items:[{ label:"Why I Took SciTech (Written Reflection)", description:"Personal statement explaining motivation for joining SciTech program.", linkKey:"gr9_why_scitech"},{ label:"My Future Goals (Career & Post-Secondary)", description:"Career aspirations, university plans, and pathways.", linkKey:"gr9_future_goals"},{ label:"Academic Achievement (Report Cards)", description:"Grade 9 report cards, certificates, honors.", linkKey:"gr9_academic_evidence"}]}, skills:{ title:"🧪 SciTech Skills, Knowledge & Certifications", items:[{ label:"Science Project: Climate Change & Sustainability", description:"Student-designed experiment/investigation with reflection.", linkKey:"gr9_science_project"},{ label:"Technology Projects (Water Wheel, Compressed Air Car, CN Tower)", description:"Completed tech projects including CAD, prototypes, and documentation.", linkKey:"gr9_tech_project"},{ label:"Safe Practices Evidence (Lab Safety & WHMIS)", description:"Safety contracts, quizzes, and bandsaw certification.", linkKey:"gr9_safe_practices"}]}, community:{ title:"🤝 Community Work & Extracurricular Involvement", items:[{ label:"Community Activity: ReSourced Volunteering", description:"Reflection on community work and involvement.", linkKey:"gr9_community_activity"}]}, scitechExtra:{ title:"⚙️ Extracurricular SciTech Experiences", items:[{ label:"Coding Club Participation", description:"Evidence of coding club involvement and STEM enrichment.", linkKey:"gr9_scitech_extra"}]}, note:"Max one SciTech Activity Postcard per year if no other evidence. Field trips do not count." }, 10:{ personal:{ title:"📄 Career Prep & Personal Info", items:[{ label:"Academic Achievement (Grade 10 Report Card)", description:"Final report card and academic records.", linkKey:"gr10_academic"},{ label:"Career Investigation (MyBlueprint)", description:"Career interest profiles and pathway exploration.", linkKey:"gr10_career_investigation"},{ label:"Resume & Cover Letter (Grade 10)", description:"Professional resume and cover letter.", linkKey:"gr10_resume_cover"}]}, skills:{ title:"🔬 SciTech Skills Growth", items:[{ label:"Science Project: Cellular Technologies", description:"Research notes and presentation on cellular technologies.", linkKey:"gr10_science_project"},{ label:"Technology Project: Tic-Tac-Toe & Manufacturing", description:"Hands-on tech project with reflection.", linkKey:"gr10_tech_project"},{ label:"Safe Practices (Manufacturing & WHMIS)", description:"Safety contracts, WHMIS quiz, safety symbols.", linkKey:"gr10_safe_practices"}]}, community:{ title:"🌟 Community Involvement (Growth evident)", items:[{ label:"Community Growth: Zugzwang & Volunteering", description:"Reflection on community work and chess club involvement.", linkKey:"gr10_community_growth"}]}, scitechExtra:{ title:"🚀 SciTech Extracurricular Growth", items:[{ label:"SciTech Extracurricular: Coding Club & DMOJ", description:"Coding club participation and online judge activity.", linkKey:"gr10_scitech_growth"}]} }, 11:{ personal:{ title:"🎓 Post-Secondary & Career Plans", items:[{ label:"Post-Secondary Plans (Personal Website & LinkedIn)", description:"Digital presence showcasing career direction.", linkKey:"gr11_post_secondary"},{ label:"Academic Achievement (Grade 11 Report Card)", description:"Final grade 11 report card.", linkKey:"gr11_academic"}]}, skills:{ title:"🏆 STEM Contest & Projects", items:[{ label:"STEM Contest: Canadian Senior Math Contest", description:"Certificate of participation/achievement.", linkKey:"gr11_stem_contest"},{ label:"Science Project: Sustainable Energy (Physics)", description:"Presentation, research, reflection, and project website.", linkKey:"gr11_science_project"},{ label:"Technology Project: ICS Portfolio & Tech Demo", description:"Tech project planning, reflection, demo video, and portfolio.", linkKey:"gr11_tech_project"}]}, community:{ title:"🌱 Community Work (Gr11 Growth from Gr10)", items:[{ label:"Community Leadership: Zugzwang Chess Club", description:"Website and reflection on running the chess club.", linkKey:"gr11_community_leadership"}]}, scitechExtra:{ title:"🧠 SciTech Experiences (Advanced)", items:[{ label:"Advanced SciTech: Science Fair & Auto-Throttle", description:"PC cooling research, data, slideshow, and engineering project.", linkKey:"gr11_scitech_advanced"}]} }, 12:{ personal:{ title:"🏅 Final Career & Employability", items:[{ label:"Final Resume & Cover Letter (Employability Skills)", description:"Updated resume, cover letter, and PDF version.", linkKey:"gr12_resume_final"},{ label:"Academic Achievement (University Offers)", description:"All university offers received.", linkKey:"gr12_academic_final"}]}, skills:{ title:"⚡ STEM Contest & Capstone Projects", items:[{ label:"STEM Contests: CCC Senior & CSMC", description:"Canadian Computing Contest and Canadian Senior Math Contest certificates.", linkKey:"gr12_contest_final"},{ label:"Science Capstone: Physics Catapult Project", description:"Final physics investigation report.", linkKey:"gr12_science_capstone"},{ label:"Technology Capstone: Pinball GUI Project", description:"GitHub repo, documentation, and technical reflection.", linkKey:"gr12_tech_capstone"}]}, community:{ title:"🤲 Community Work (Grade 12 Leadership)", items:[{ label:"Community Leadership & Networking", description:"Reflection on community work and LinkedIn profile.", linkKey:"gr12_community_exec"}]}, scitechExtra:{ title:"🏁 SciTech Extracurricular Culmination", items:[{ label:"SciTech Culmination: Engineering Idol (SCOPE)", description:"LinkedIn reflection, GitHub repo, documentation website, and presentation.", linkKey:"gr12_scitech_culmination"}]}, gradRequirement:"✅ FINAL REQUIREMENT: Portfolio presentation to staff (SciTech Certificate). Rubric: Meets/Exceeds Expectations required." } };
 
   let currentGrade = 12;
 
-  function getLinksForRequirement(linkKey) {
-    return PERMANENT_LINKS[linkKey] || [];
-  }
-
+  function getLinksForRequirement(linkKey) { return PERMANENT_LINKS[linkKey] || []; }
   function renderLinksForRequirement(linkKey, containerId) {
     const links = getLinksForRequirement(linkKey);
     const container = document.getElementById(containerId);
     if (!container) return;
-
-    if (links.length === 0) {
-      container.innerHTML = `<div class="empty-links"><i class="fas fa-info-circle"></i> No evidence links added yet. Edit the PERMANENT_LINKS object in the HTML to add your URLs.</div>`;
-      return;
-    }
-
+    if (links.length === 0) { container.innerHTML = `<div class="empty-links"><i class="fas fa-info-circle"></i> No evidence links added yet. Edit the PERMANENT_LINKS object in the HTML to add your URLs.</div>`; return; }
     let html = `<div class="links-list">`;
-    links.forEach((link) => {
-      const displayLabel = link.label ? `${escapeHtml(link.label)} – ` : '';
-      html += `
-        <div class="link-item">
-          <div class="link-url-display">
-            ${displayLabel}<a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> ${truncateUrl(escapeHtml(link.url))}</a>
-          </div>
-        </div>
-      `;
-    });
-    html += `</div>`;
-    container.innerHTML = html;
+    links.forEach((link) => { const displayLabel = link.label ? `${escapeHtml(link.label)} – ` : ''; html += `<div class="link-item"><div class="link-url-display">${displayLabel}<a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> ${truncateUrl(escapeHtml(link.url))}</a></div></div>`; });
+    html += `</div>`; container.innerHTML = html;
   }
-
   function renderSocialLinks() {
     const container = document.getElementById("socialLinksContainer");
     if (!container) return;
-    
     let html = '';
-    SOCIAL_LINKS.forEach(link => {
-      const driveClass = link.isDrive ? 'drive-link' : '';
-      html += `<a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer" class="social-link ${driveClass}" style="background: ${link.color}20; border: 1px solid ${link.color}40;">
-        <i class="${link.icon}" style="color: ${link.color}"></i> ${link.platform}
-      </a>`;
-    });
+    SOCIAL_LINKS.forEach(link => { const driveClass = link.isDrive ? 'drive-link' : ''; html += `<a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer" class="social-link ${driveClass}" style="background: ${link.color}20; border: 1px solid ${link.color}40;"><i class="${link.icon}" style="color: ${link.color}"></i> ${link.platform}</a>`; });
     container.innerHTML = html;
   }
-
-  function truncateUrl(url, maxLen = 55) {
-    if (url.length <= maxLen) return url;
-    return url.substring(0, maxLen - 3) + "...";
-  }
-
-  function escapeHtml(str) {
-    if (!str) return '';
-    return str.replace(/[&<>]/g, function (m) {
-      if (m === '&') return '&amp;';
-      if (m === '<') return '&lt;';
-      if (m === '>') return '&gt;';
-      return m;
-    });
-  }
-
+  function truncateUrl(url, maxLen = 55) { if (url.length <= maxLen) return url; return url.substring(0, maxLen - 3) + "..."; }
+  function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, function (m) { if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; return m; }); }
   function renderSection(grade, sectionKey, sectionData) {
     let html = `<div class="section-card"><div class="section-header"><h2><i class="fas ${sectionKey === 'personal' ? 'fa-user-circle' : (sectionKey === 'skills' ? 'fa-microscope' : (sectionKey === 'community' ? 'fa-hand-holding-heart' : 'fa-microchip'))}"></i> ${sectionData.title}</h2></div><div class="requirement-list">`;
-
-    for (let i = 0; i < sectionData.items.length; i++) {
-      const item = sectionData.items[i];
-      const linkKey = item.linkKey;
-      const uniqueContainerId = `links_${linkKey}`;
-
-      html += `
-        <div class="req-item">
-          <div class="req-title">
-            <span>📌 ${escapeHtml(item.label)}</span>
-            <span class="req-badge">evidence links</span>
-          </div>
-          <div class="req-desc">${escapeHtml(item.description)}</div>
-          <div class="links-container">
-            <div id="${uniqueContainerId}" class="links-render-area"></div>
-          </div>
-        </div>
-      `;
-    }
-    html += `</div></div>`;
-    return { html, linkKeys: sectionData.items.map(it => it.linkKey) };
+    for (let i = 0; i < sectionData.items.length; i++) { const item = sectionData.items[i]; const linkKey = item.linkKey; const uniqueContainerId = `links_${linkKey}`; html += `<div class="req-item"><div class="req-title"><span>📌 ${escapeHtml(item.label)}</span><span class="req-badge">evidence links</span></div><div class="req-desc">${escapeHtml(item.description)}</div><div class="links-container"><div id="${uniqueContainerId}" class="links-render-area"></div></div></div>`; }
+    html += `</div></div>`; return { html, linkKeys: sectionData.items.map(it => it.linkKey) };
   }
-
   function renderGradeView(gradeNum) {
     const structure = requirementsStructure[gradeNum];
-    if (!structure) {
-      document.getElementById("dynamicPortfolioContent").innerHTML = `<div class="full-width-note">Requirements not available.</div>`;
-      return;
-    }
-
+    if (!structure) { document.getElementById("dynamicPortfolioContent").innerHTML = `<div class="full-width-note">Requirements not available.</div>`; return; }
     const leftPersonal = renderSection(gradeNum, "personal", structure.personal);
     const leftSkills = renderSection(gradeNum, "skills", structure.skills);
     const rightCommunity = renderSection(gradeNum, "community", structure.community);
     const rightScitech = renderSection(gradeNum, "scitechExtra", structure.scitechExtra);
-
-    let leftHtml = leftPersonal.html + leftSkills.html;
-    let rightHtml = rightCommunity.html + rightScitech.html;
-
+    let leftHtml = leftPersonal.html + leftSkills.html, rightHtml = rightCommunity.html + rightScitech.html;
     let extraNoteHtml = structure.note ? `<div class="full-width-note"><i class="fas fa-info-circle"></i> ${structure.note}</div>` : "";
     let gradReqHtml = structure.gradRequirement ? `<div class="full-width-note" style="background:var(--grad-req-bg);border-left-color:var(--grad-req-border);"><i class="fas fa-certificate"></i> ${structure.gradRequirement}</div>` : "";
-
     const container = document.getElementById("dynamicPortfolioContent");
-    container.innerHTML = `
-      <div class="requirements-grid">
-        <div>${leftHtml}</div>
-        <div>${rightHtml}</div>
-      </div>
-      ${extraNoteHtml}
-      ${gradReqHtml}
-    `;
-
+    container.innerHTML = `<div class="requirements-grid"><div>${leftHtml}</div><div>${rightHtml}</div></div>${extraNoteHtml}${gradReqHtml}`;
     const allLinkKeys = [...leftPersonal.linkKeys, ...leftSkills.linkKeys, ...rightCommunity.linkKeys, ...rightScitech.linkKeys];
-    allLinkKeys.forEach(linkKey => {
-      const containerId = `links_${linkKey}`;
-      renderLinksForRequirement(linkKey, containerId);
-    });
+    allLinkKeys.forEach(linkKey => { const containerId = `links_${linkKey}`; renderLinksForRequirement(linkKey, containerId); });
   }
-
   function initYearTabs() {
     const tabs = document.querySelectorAll(".year-btn");
-    tabs.forEach(tab => {
-      tab.addEventListener("click", (e) => {
-        const grade = parseInt(tab.getAttribute("data-grade"));
-        if (!isNaN(grade)) {
-          currentGrade = grade;
-          tabs.forEach(btn => btn.classList.remove("active"));
-          tab.classList.add("active");
-          renderGradeView(currentGrade);
-        }
-      });
-    });
+    tabs.forEach(tab => { tab.addEventListener("click", (e) => { const grade = parseInt(tab.getAttribute("data-grade")); if (!isNaN(grade)) { currentGrade = grade; tabs.forEach(btn => btn.classList.remove("active")); tab.classList.add("active"); renderGradeView(currentGrade); } }); });
   }
-
-  // Dark Mode Toggle
   function initDarkMode() {
     const toggleBtn = document.getElementById("darkModeToggle");
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const savedTheme = localStorage.getItem("darkMode");
-    
-    if (savedTheme === "enabled" || (savedTheme === null && prefersDark)) {
-      document.body.classList.add("dark");
-      toggleBtn.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
-    }
-    
-    toggleBtn.addEventListener("click", () => {
-      document.body.classList.toggle("dark");
-      const isDark = document.body.classList.contains("dark");
-      localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
-      toggleBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i> Light Mode' : '<i class="fas fa-moon"></i> Dark Mode';
-    });
+    if (savedTheme === "enabled" || (savedTheme === null && prefersDark)) { document.body.classList.add("dark"); toggleBtn.innerHTML = '<i class="fas fa-sun"></i> Light Mode'; }
+    toggleBtn.addEventListener("click", () => { document.body.classList.toggle("dark"); const isDark = document.body.classList.contains("dark"); localStorage.setItem("darkMode", isDark ? "enabled" : "disabled"); toggleBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i> Light Mode' : '<i class="fas fa-moon"></i> Dark Mode'; });
   }
-
-  // Initialize
-  renderSocialLinks();
-  renderGradeView(12);
-  initYearTabs();
-  initDarkMode();
+  function initVolunteerAndQR() {
+    const volunteerLink = document.getElementById("volunteerFormLink");
+    if (volunteerLink && VOLUNTEER_FORM_URL) { volunteerLink.href = VOLUNTEER_FORM_URL; }
+    const qrTarget = "https://sarveshwarsenthilkumar.github.io/SciTechPortfolio/";
+    document.getElementById("qrTargetUrl").innerText = qrTarget;
+    const qrContainer = document.getElementById("qrCodeContainer");
+    if (qrContainer && typeof QRCode !== "undefined") { qrContainer.innerHTML = ""; new QRCode(qrContainer, { text: qrTarget, width: 160, height: 160, colorDark: "#000000", colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.H }); }
+    else { qrContainer.innerHTML = `<div class="empty-links"><i class="fas fa-qrcode"></i> QR library loaded, generating code...</div>`; setTimeout(()=>{ if(typeof QRCode !=="undefined"){ qrContainer.innerHTML=""; new QRCode(qrContainer,{text:qrTarget,width:160,height:160}); } },100); }
+  }
+  renderSocialLinks(); renderGradeView(12); initYearTabs(); initDarkMode(); initVolunteerAndQR();
 </script>
 </body>
 </html>
