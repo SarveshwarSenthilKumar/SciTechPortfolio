@@ -274,7 +274,7 @@
   <div class="header-card">
     <div class="title-section">
       <h1><i class="fas fa-link"></i> SciTech Permanent Portfolio</h1>
-      <p>Hardcoded evidence links • Works on any device • Edit URLs directly in the HTML</p>
+      <p>Hardcoded evidence links • Works on any device</p>
     </div>
     <div class="student-info">
       <p><strong><i class="fas fa-user-graduate"></i> Sarveshwar Senthil Kumar</strong></p>
@@ -292,19 +292,10 @@
 
   <div id="dynamicPortfolioContent"></div>
 
-  <div class="footer-note">
-    <i class="fas fa-code"></i> <strong>How to edit these links permanently:</strong> Open this HTML file in any text editor (Notepad, VS Code). Scroll to the <code style="background:#e2e8f0;padding:2px 6px;border-radius:8px;">// ========== LINKS DATABASE (EDIT YOUR URLs HERE) ==========</code> section. Replace the placeholder URLs with your real Google Drive / PDF / photo links. Save and re-open — your links will be visible to everyone!
-  </div>
 </div>
 
 <script>
-  // =========================================================================
-  // ========== LINKS DATABASE (EDIT YOUR URLs HERE — PERMANENT) ==========
-  // =========================================================================
-  // Replace the placeholder URLs with your actual evidence links.
-  // Each requirement can have MULTIPLE links (array of objects).
-  // Format: { url: "https://your-link.com/file.pdf", label: "Optional description" }
-  // =========================================================================
+
 
   const PERMANENT_LINKS = {
     // ========== GRADE 9 ==========
@@ -642,9 +633,6 @@
       </div>
       ${extraNoteHtml}
       ${gradReqHtml}
-      <div class="edit-hint">
-        <i class="fas fa-pen-fancy"></i> <strong>To update these links permanently:</strong> Open this HTML file in a text editor, find the <code>PERMANENT_LINKS</code> object (near the top of the &lt;script&gt; tag), and replace the placeholder URLs with your actual Google Drive, PDF, or photo links. Save and refresh.
-      </div>
     `;
 
     // Render all links
