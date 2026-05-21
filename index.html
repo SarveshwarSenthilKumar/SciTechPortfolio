@@ -38,6 +38,7 @@
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
+      gap: 1.5rem;
     }
 
     .title-section h1 {
@@ -63,6 +64,67 @@
     .student-info p {
       margin: 0.2rem 0;
       font-size: 0.9rem;
+    }
+
+    /* social links bar */
+    .social-links-bar {
+      background: linear-gradient(135deg, #1a3c5c, #0f2b3d);
+      border-radius: 1.2rem;
+      padding: 0.8rem 1.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .social-title {
+      color: white;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .social-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.12);
+      padding: 0.4rem 1rem;
+      border-radius: 2rem;
+      text-decoration: none;
+      color: #e0f0ff;
+      font-size: 0.8rem;
+      font-weight: 500;
+      transition: 0.2s;
+      backdrop-filter: blur(4px);
+    }
+
+    .social-link i {
+      font-size: 1rem;
+    }
+
+    .social-link:hover {
+      background: #2c7da0;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .drive-link {
+      background: #0f6b3a;
+    }
+    .drive-link:hover {
+      background: #0f8b4a;
     }
 
     /* year tabs */
@@ -266,6 +328,14 @@
       .student-info {
         text-align: center;
       }
+      .social-links-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .social-icons {
+        justify-content: center;
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -283,6 +353,14 @@
     </div>
   </div>
 
+  <!-- SOCIAL & PORTFOLIO LINKS BAR (Editable in the HTML) -->
+  <div class="social-links-bar">
+    <div class="social-title"><i class="fas fa-share-alt"></i> Connect & Portfolio</div>
+    <div class="social-icons" id="socialLinksContainer">
+      <!-- Links are populated from the SOCIAL_LINKS object below -->
+    </div>
+  </div>
+
   <div class="year-tabs" id="yearTabs">
     <button class="year-btn" data-grade="9"><i class="fas fa-seedling"></i> Grade 9</button>
     <button class="year-btn" data-grade="10"><i class="fas fa-chart-line"></i> Grade 10</button>
@@ -292,9 +370,24 @@
 
   <div id="dynamicPortfolioContent"></div>
 
+  <div class="footer-note">
+    <i class="fas fa-edit"></i> To update social links, scroll down in the HTML to the <strong>SOCIAL_LINKS</strong> section and replace the URLs.
+  </div>
 </div>
 
 <script>
+  // =========================================================================
+  // ========== SOCIAL & PORTFOLIO LINKS (EDIT YOUR URLs HERE) ===============
+  // =========================================================================
+  const SOCIAL_LINKS = [
+    { platform: "LinkedIn", icon: "fab fa-linkedin", url: "https://www.linkedin.com/in/sarveshwarsenthilkumar/", color: "#0077b5" },
+    { platform: "Personal Website", icon: "fas fa-globe", url: "https://sarveshwarsenthilkumar.github.io/", color: "#4a6f8f" },
+    { platform: "DMOJ", icon: "fas fa-code", url: "https://dmoj.ca/user/SarveshwarSenthilKumar", color: "#2c7da0" },
+    { platform: "GitHub", icon: "fab fa-github", url: "https://github.com/SarveshwarSenthilKumar", color: "#333" },
+    { platform: "Devpost", icon: "fab fa-dev", url: "https://devpost.com/sarveshwar313", color: "#003e54" },
+    { platform: "SciTech Drive", icon: "fas fa-folder-open", url: "https://drive.google.com/drive/folders/1XJw7XGlxKerBcJnycnGWrmzvtqopJ4J6X3ReXlYtIBE6zV5NqC5LnXPJExk1kxV5CIhUjxse?usp=sharing", color: "#0f6b3a", isDrive: true }
+  ];
+
   // =========================================================================
   // ========== LINKS DATABASE (YOUR ORIGINAL LINKS - UNTOUCHED) =============
   // =========================================================================
@@ -593,6 +686,20 @@
     container.innerHTML = html;
   }
 
+  function renderSocialLinks() {
+    const container = document.getElementById("socialLinksContainer");
+    if (!container) return;
+    
+    let html = '';
+    SOCIAL_LINKS.forEach(link => {
+      const driveClass = link.isDrive ? 'drive-link' : '';
+      html += `<a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer" class="social-link ${driveClass}" style="background: ${link.color}20; border: 1px solid ${link.color}40;">
+        <i class="${link.icon}" style="color: ${link.color}"></i> ${link.platform}
+      </a>`;
+    });
+    container.innerHTML = html;
+  }
+
   function truncateUrl(url, maxLen = 55) {
     if (url.length <= maxLen) return url;
     return url.substring(0, maxLen - 3) + "...";
@@ -684,6 +791,7 @@
   }
 
   // Initialize
+  renderSocialLinks();
   renderGradeView(12);
   initYearTabs();
 </script>
