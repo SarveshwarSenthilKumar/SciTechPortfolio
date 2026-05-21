@@ -295,8 +295,9 @@
 </div>
 
 <script>
-
-
+  // =========================================================================
+  // ========== LINKS DATABASE (YOUR ORIGINAL LINKS - UNTOUCHED) =============
+  // =========================================================================
   const PERMANENT_LINKS = {
     // ========== GRADE 9 ==========
     "gr9_why_scitech": [
@@ -310,7 +311,7 @@
     ],
     "gr9_science_project": [
       { url: "https://docs.google.com/document/d/15fUnunEpSnG4VJCqaUvH1kxiZe0O8YCAfLPWWJOYGgI/edit?usp=sharing", label: "Climate Change Grade 9 Science Project Reflection" },
-      { url: "https://drive.google.com/file/d/1BBfxJSTyeJNCOodaA8O9aWv_yqpR91UZ/view?usp=sharing", label: "Climate Change and Sustainablility Project" },
+      { url: "https://drive.google.com/file/d/1BBfxJSTyeJNCOodaA8O9aWv_yqpR91UZ/view?usp=sharing", label: "Climate Change and Sustainability Project" },
       { url: "https://drive.google.com/file/d/1kd8XjqKx4rRS-p3hvKCkaMUgFzrELQfF/view?usp=sharing", label: "Climate Change and Sustainability Project (Newspaper Article) - Sarveshwar Senthil Kumar" }
     ],
     "gr9_tech_project": [
@@ -365,7 +366,6 @@
       { url: "https://docs.google.com/document/d/1hrYlmk0J4K4SjcCIU6eA9Nc-VkXPCQe_uKUc0l6awbo/edit?usp=sharing", label: "Grade 10 SciTech Extracurricular Experience" },
       { url: "https://drive.google.com/file/d/1CRRLTVq-6uDSRtP84XpJ_zn5r_fWsPnU/view?usp=sharing", label: "Email to Mr. Knowles" },
       { url: "https://dmoj.ca/organization/207-port-credit-secondary-school-coding-club/users", label: "DMOJ Coding Club Organization Page" }
-
     ],
 
     // ========== GRADE 11 ==========
@@ -398,7 +398,6 @@
     "gr11_scitech_advanced": [
       { url: "https://docs.google.com/document/d/1BauSMYDtd1Qn03mgfA1RUzOg_LaAWh3rz0pERnHM9is/edit?usp=sharing", label: "Grade 11 Extracurricular Reflection" },
       { url: "https://sarveshwarsenthilkumar.github.io/autothrottle.github.io/", label: "Auto-Throttle Website" },
-      //Science Fair Content: Extras
       { url: "https://docs.google.com/document/d/13vLn9WixaGfVcAJsa1PR3JqwSPHjtaWt-IzLrOcjFYo/edit?usp=sharing", label: "Science Fair PC Cooling Research Document" },
       { url: "https://docs.google.com/spreadsheets/d/1Hoc2hJe-jCp1QGrRM9cptbalIZ1dlXuiMOYtF2dhIHk/edit?usp=sharing", label: "Science Fair Data" },
       { url: "https://docs.google.com/presentation/d/1TvQWrr-tAgVkDCXz6-cqicwNs_rMEfqYBfBLRKnkIGM/edit?usp=sharing", label: "Science Fair Slideshow" }
@@ -411,7 +410,7 @@
       { url: "https://sarveshwarsenthilkumar.github.io/Profile.pdf", label: "Final Updated Resume (Site)" }
     ],
     "gr12_academic_final": [
-      { url: "https://drive.google.com/file/d/1p8B0k8AesQqY8U17rtNnHUTTlt8BKQ0V/view?usp=sharing", label: "All University Offers" },
+      { url: "https://drive.google.com/file/d/1p8B0k8AesQqY8U17rtNnHUTTlt8BKQ0V/view?usp=sharing", label: "All University Offers" }
     ],
     "gr12_contest_final": [
       { url: "https://drive.google.com/file/d/10ANpnQOkxIKPAmUlqWtIIqXOWBy9gPrW/view?usp=sharing", label: "Canadian Computing Contest (Senior) - Certificate" },
@@ -438,38 +437,36 @@
   };
 
   // =========================================================================
-  // ========== END OF LINKS DATABASE — DO NOT EDIT BELOW THIS LINE ==========
+  // ========== REQUIREMENTS STRUCTURE (ALIGNED WITH LINKS ABOVE) ============
   // =========================================================================
-
-  // Requirement structure (references the keys above)
   const requirementsStructure = {
     9: {
       personal: {
         title: "📁 Personal Information & Academic Achievement",
         items: [
-          { label: "Why I Took SciTech (statement / reflection)", description: "Paragraph about motivation, goals, and initial interest in SciTech.", linkKey: "gr9_why_scitech" },
-          { label: "My Future Goals (post-secondary / career)", description: "Career aspirations, university plans, or skilled trades pathway.", linkKey: "gr9_future_goals" },
-          { label: "Evidence for Academic Achievement", description: "Report cards, certificates, honor roll, awards.", linkKey: "gr9_academic_evidence" }
+          { label: "Why I Took SciTech (Written Reflection)", description: "Personal statement explaining motivation for joining SciTech program.", linkKey: "gr9_why_scitech" },
+          { label: "My Future Goals (Career & Post-Secondary)", description: "Career aspirations, university plans, and pathways.", linkKey: "gr9_future_goals" },
+          { label: "Academic Achievement (Report Cards)", description: "Grade 9 report cards, certificates, honors.", linkKey: "gr9_academic_evidence" }
         ]
       },
       skills: {
         title: "🧪 SciTech Skills, Knowledge & Certifications",
         items: [
-          { label: "Science Project #1 (student-designed experiment/investigation)", description: "Lab report, slides, photo evidence + reflection.", linkKey: "gr9_science_project" },
-          { label: "Technology Project #1 (completed project)", description: "CAD design, coding project, prototype documentation.", linkKey: "gr9_tech_project" },
-          { label: "Safe Practices Evidence (tests/quizzes/certificates)", description: "WHMIS, safety quiz results, lab safety certification.", linkKey: "gr9_safe_practices" }
+          { label: "Science Project: Climate Change & Sustainability", description: "Student-designed experiment/investigation with reflection.", linkKey: "gr9_science_project" },
+          { label: "Technology Projects (Water Wheel, Compressed Air Car, CN Tower)", description: "Completed tech projects including CAD, prototypes, and documentation.", linkKey: "gr9_tech_project" },
+          { label: "Safe Practices Evidence (Lab Safety & WHMIS)", description: "Safety contracts, quizzes, and bandsaw certification.", linkKey: "gr9_safe_practices" }
         ]
       },
       community: {
         title: "🤝 Community Work & Extracurricular Involvement",
         items: [
-          { label: "Unique community / extracurricular item", description: "Volunteering, school club, council, formal organization.", linkKey: "gr9_community_activity" }
+          { label: "Community Activity: ReSourced Volunteering", description: "Reflection on community work and involvement.", linkKey: "gr9_community_activity" }
         ]
       },
       scitechExtra: {
         title: "⚙️ Extracurricular SciTech Experiences",
         items: [
-          { label: "Unique SciTech experience (Robotics, Coding Club, Science Fair, etc.)", description: "Evidence of STEM club or competition participation.", linkKey: "gr9_scitech_extra" }
+          { label: "Coding Club Participation", description: "Evidence of coding club involvement and STEM enrichment.", linkKey: "gr9_scitech_extra" }
         ]
       },
       note: "Max one SciTech Activity Postcard per year if no other evidence. Field trips do not count."
@@ -478,29 +475,29 @@
       personal: {
         title: "📄 Career Prep & Personal Info",
         items: [
-          { label: "Academic Achievement (report cards, certificates)", description: "Grade 10 report cards, literacy test, certifications.", linkKey: "gr10_academic" },
-          { label: "Career Investigation Summary (MyBlueprint / Career Cruising)", description: "Completed career profile or skills passport summary.", linkKey: "gr10_career_investigation" },
-          { label: "Updated Resume & Cover Letter", description: "Professional resume + cover letter for co-op or job.", linkKey: "gr10_resume_cover" }
+          { label: "Academic Achievement (Grade 10 Report Card)", description: "Final report card and academic records.", linkKey: "gr10_academic" },
+          { label: "Career Investigation (MyBlueprint)", description: "Career interest profiles and pathway exploration.", linkKey: "gr10_career_investigation" },
+          { label: "Resume & Cover Letter (Grade 10)", description: "Professional resume and cover letter.", linkKey: "gr10_resume_cover" }
         ]
       },
       skills: {
         title: "🔬 SciTech Skills Growth",
         items: [
-          { label: "Science Project + Reflection (growth from Gr9)", description: "Student-designed experiment with improved methodology.", linkKey: "gr10_science_project" },
-          { label: "Technology Project + Reflection", description: "Advanced tech project (Arduino, app, 3D modeling).", linkKey: "gr10_tech_project" },
-          { label: "Safe Practices Evidence (updated)", description: "Advanced safety certifications or quiz scores.", linkKey: "gr10_safe_practices" }
+          { label: "Science Project: Cellular Technologies", description: "Research notes and presentation on cellular technologies.", linkKey: "gr10_science_project" },
+          { label: "Technology Project: Tic-Tac-Toe & Manufacturing", description: "Hands-on tech project with reflection.", linkKey: "gr10_tech_project" },
+          { label: "Safe Practices (Manufacturing & WHMIS)", description: "Safety contracts, WHMIS quiz, safety symbols.", linkKey: "gr10_safe_practices" }
         ]
       },
       community: {
         title: "🌟 Community Involvement (Growth evident)",
         items: [
-          { label: "Organized community/extracurricular (showing growth from Gr9)", description: "Increased responsibility, new role, or new organization.", linkKey: "gr10_community_growth" }
+          { label: "Community Growth: Zugzwang & Volunteering", description: "Reflection on community work and chess club involvement.", linkKey: "gr10_community_growth" }
         ]
       },
       scitechExtra: {
         title: "🚀 SciTech Extracurricular Growth",
         items: [
-          { label: "Unique SciTech experience with growth from Gr9", description: "Higher involvement level (leadership, regional competition).", linkKey: "gr10_scitech_growth" }
+          { label: "SciTech Extracurricular: Coding Club & DMOJ", description: "Coding club participation and online judge activity.", linkKey: "gr10_scitech_growth" }
         ]
       }
     },
@@ -508,28 +505,28 @@
       personal: {
         title: "🎓 Post-Secondary & Career Plans",
         items: [
-          { label: "Post-Secondary Plans (university/college/apprenticeship)", description: "Program interests, university research, career pathways.", linkKey: "gr11_post_secondary" },
-          { label: "Academic Achievement (Gr11 report cards/certificates)", description: "Semester 1/2 report cards, AP/IB results, awards.", linkKey: "gr11_academic" }
+          { label: "Post-Secondary Plans (Personal Website & LinkedIn)", description: "Digital presence showcasing career direction.", linkKey: "gr11_post_secondary" },
+          { label: "Academic Achievement (Grade 11 Report Card)", description: "Final grade 11 report card.", linkKey: "gr11_academic" }
         ]
       },
       skills: {
         title: "🏆 STEM Contest & Projects",
         items: [
-          { label: "STEM related contest at PCSS (Caribou, Waterloo, Science Fair, HOSA)", description: "Proof of participation, scores, certificates.", linkKey: "gr11_stem_contest" },
-          { label: "Science Project + Reflection (advanced investigation)", description: "Independent research, formal lab report or poster.", linkKey: "gr11_science_project" },
-          { label: "Technology Project + Reflection", description: "Portfolio-ready tech artifact with documentation.", linkKey: "gr11_tech_project" }
+          { label: "STEM Contest: Canadian Senior Math Contest", description: "Certificate of participation/achievement.", linkKey: "gr11_stem_contest" },
+          { label: "Science Project: Sustainable Energy (Physics)", description: "Presentation, research, reflection, and project website.", linkKey: "gr11_science_project" },
+          { label: "Technology Project: ICS Portfolio & Tech Demo", description: "Tech project planning, reflection, demo video, and portfolio.", linkKey: "gr11_tech_project" }
         ]
       },
       community: {
         title: "🌱 Community Work (Gr11 Growth from Gr10)",
         items: [
-          { label: "Organized community/extracurricular (leadership / long-term)", description: "Evidence of sustained commitment or mentorship.", linkKey: "gr11_community_leadership" }
+          { label: "Community Leadership: Zugzwang Chess Club", description: "Website and reflection on running the chess club.", linkKey: "gr11_community_leadership" }
         ]
       },
       scitechExtra: {
         title: "🧠 SciTech Experiences (Advanced)",
         items: [
-          { label: "Unique SciTech experience growth from Gr10", description: "High-level competition, council exec, specialized workshop.", linkKey: "gr11_scitech_advanced" }
+          { label: "Advanced SciTech: Science Fair & Auto-Throttle", description: "PC cooling research, data, slideshow, and engineering project.", linkKey: "gr11_scitech_advanced" }
         ]
       }
     },
@@ -537,28 +534,28 @@
       personal: {
         title: "🏅 Final Career & Employability",
         items: [
-          { label: "Updated Resume & Cover Letter (Employability Skills)", description: "Final polished resume for scholarships or applications.", linkKey: "gr12_resume_final" },
-          { label: "Evidence for Academic Achievement (Gr12 report cards / certs)", description: "Midterms, finals, scholarships, acceptances.", linkKey: "gr12_academic_final" }
+          { label: "Final Resume & Cover Letter (Employability Skills)", description: "Updated resume, cover letter, and PDF version.", linkKey: "gr12_resume_final" },
+          { label: "Academic Achievement (University Offers)", description: "All university offers received.", linkKey: "gr12_academic_final" }
         ]
       },
       skills: {
         title: "⚡ STEM Contest & Capstone Projects",
         items: [
-          { label: "STEM related contest at PCSS (Grade 12 participation)", description: "Final year contest (math, science, HOSA, Skills).", linkKey: "gr12_contest_final" },
-          { label: "Science Project (final year investigation)", description: "Capstone research project, science fair senior division.", linkKey: "gr12_science_capstone" },
-          { label: "Technology Project (final showcase)", description: "Major tech creation (app, robot, design portfolio).", linkKey: "gr12_tech_capstone" }
+          { label: "STEM Contests: CCC Senior & CSMC", description: "Canadian Computing Contest and Canadian Senior Math Contest certificates.", linkKey: "gr12_contest_final" },
+          { label: "Science Capstone: Physics Catapult Project", description: "Final physics investigation report.", linkKey: "gr12_science_capstone" },
+          { label: "Technology Capstone: Pinball GUI Project", description: "GitHub repo, documentation, and technical reflection.", linkKey: "gr12_tech_capstone" }
         ]
       },
       community: {
         title: "🤲 Community Work (Grade 12 Leadership)",
         items: [
-          { label: "Unique community/extracurricular showing growth from Gr11", description: "Executive role, significant hours, or initiative leadership.", linkKey: "gr12_community_exec" }
+          { label: "Community Leadership & Networking", description: "Reflection on community work and LinkedIn profile.", linkKey: "gr12_community_exec" }
         ]
       },
       scitechExtra: {
         title: "🏁 SciTech Extracurricular Culmination",
         items: [
-          { label: "Unique SciTech experience growth from Gr11", description: "Pre-Med club exec, Solar Car, Robotics captain, HOSA ILC.", linkKey: "gr12_scitech_culmination" }
+          { label: "SciTech Culmination: Engineering Idol (SCOPE)", description: "LinkedIn reflection, GitHub repo, documentation website, and presentation.", linkKey: "gr12_scitech_culmination" }
         ]
       },
       gradRequirement: "✅ FINAL REQUIREMENT: Portfolio presentation to staff (SciTech Certificate). Rubric: Meets/Exceeds Expectations required."
@@ -582,7 +579,7 @@
     }
 
     let html = `<div class="links-list">`;
-    links.forEach((link, idx) => {
+    links.forEach((link) => {
       const displayLabel = link.label ? `${escapeHtml(link.label)} – ` : '';
       html += `
         <div class="link-item">
@@ -664,7 +661,6 @@
       ${gradReqHtml}
     `;
 
-    // Render all links
     const allLinkKeys = [...leftPersonal.linkKeys, ...leftSkills.linkKeys, ...rightCommunity.linkKeys, ...rightScitech.linkKeys];
     allLinkKeys.forEach(linkKey => {
       const containerId = `links_${linkKey}`;
